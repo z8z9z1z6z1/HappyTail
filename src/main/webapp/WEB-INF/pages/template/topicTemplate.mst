@@ -1,0 +1,513 @@
+<!--
+*mustache輸出單筆資料範例
+
+以下為輸入JSON物件:
+{
+    'attrA' : 'Apple',
+    'attrB' : 'Batman',
+    'attrC' : 'Car'
+}
+
+以下為mustache單筆輸出語法:
+<div> {{ attrA }} </div>
+<p> {{ attrB }} </p>
+<span> {{ attrC }} </span>
+
+以下為輸出結果:
+<div> Apple </div>
+<p> Batman </p>
+<span> Car </span>
+-->
+
+<div id="single-comment">
+    <div class="card info-card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-2"> PostId: </div>
+                <div class="col-2"> {{ postId }} </div>
+                <div class="col-2"> Id: </div>
+                <div class="col-6"> {{ id }} </div>
+            </div>
+        </div>
+        <div class="card-header">
+            <div class="row">
+                <div class="col-2"> Name: </div>
+                <div class="col-2"> {{ name }} </div>
+                <div class="col-2"> Email: </div>
+                <div class="col-6"> {{ email }} </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    {{ body }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+---------------------------------------------------------------------
+<!--
+*mustache輸出陣列語法範例
+
+以下為輸入json物件:
+{
+    'jsonArrayKey' : [
+        {'attrA':'A', 'attrB':'B'},
+        {'attrA':'C', 'attrB':'D'},
+        {'attrA':'E', 'attrB':'F'}
+    ]
+}
+
+以下為mustache陣列語法:
+{{#jsonArrayKey}}
+    <span> {{attrA}} </span> <span> {{attrB}} </span> <br/>
+{{/jsonArrayKey}}
+
+以下為輸出:
+<span> A </span> <span> B </span> <br/>
+<span> C </span> <span> D </span> <br/>
+<span> E </span> <span> F </span> <br/>
+
+-->
+
+<div id="comment-list">
+
+{{#commentList}}
+    <div class="card info-card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-2"> PostId: </div>
+                <div class="col-2"> {{ postId }} </div>
+                <div class="col-2"> Id: </div>
+                <div class="col-6"> {{ id }} </div>
+            </div>
+        </div>
+        <div class="card-header">
+            <div class="row">
+                <div class="col-2"> Name: </div>
+                <div class="col-2"> {{ name }} </div>
+                <div class="col-2"> Email: </div>
+                <div class="col-6"> {{ email }} </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    {{ body }}
+                </div>
+            </div>
+        </div>
+    </div>
+{{/commentList}}
+
+</div>
+
+---------------------------------------------------------------------
+
+<div id="post">
+    <div class="card info-card fold">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-3"> UserId: </div>
+                <div class="col-3"> {{ userId }} </div>
+                <div class="col-3"> Id: </div>
+                <div class="col-3"> {{ id }} </div>
+            </div>
+        </div>
+        <div class="card-header">
+            <div class="row">
+                <div class="col-3"> Title: </div>
+                <div class="col-9"> {{ title }} </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    {{ body }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+--------------------------------------------------------------
+
+<div id="reply">
+    <div id="B{{ stage }}" class="card info-card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-12"> {{ username }} </div>
+            </div>
+            <div class="row text-muted">
+                <div class="col-12"> <span class="stage-value" onclick="setStage('B{{ stage }}')">B{{ stage }}</span> | {{ time }} </div> 
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    {{{ content }}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+--------------------------------------------------------------
+
+<div id="stage">
+    <a href="#{{ stage }}">{{ stage }}</a>&nbsp;
+</div>
+
+--------------------------------------------------------------
+
+<div id="stage-list">
+{{ #stageList }}
+    <span class="list-group-item list-group-item-action" onclick="setStage('{{ stage }}')" >{{ stage }}</span>
+{{ /stageList }}
+</div>
+
+---------------------------------------------------------------
+<!--
+{ 
+   'records':[
+   		{
+            "userId": 2,
+            "username": "915",
+            "categoryId": 1,
+            "topicId": 18,
+            "title": "01062020",
+            "createDate": "2020-06-01 02:47",
+            "imageUrl": null,
+            "replyNum": 0,
+            "count": 0,
+            "likeNum": 0,
+            "category": "生活",
+            "isThumbsUp": null,
+            "isFollowed": null,
+            "isReported": null
+        },
+   		{data2},
+   		{data3},
+   		{data4}
+   ]
+}
+
+var data = Mustache.render(template,jsonObj);
+
+$("#target").prepend(data);
+$("#target").append(data);
+$("#target").html(data);
+
+<div id="target">
+	- > prepend
+	
+	<p>Content</p>
+	
+	- >append
+</div>
+-->
+
+<div id="topicList">
+
+
+{{ #records }}
+<div class="card mb-3" style="max-width: 100%;">
+	<div class="card-body">
+		<div class="row no-gutters">
+			<div class="col-md-4">
+				<p class="card-text" style="font-size:24px">
+					<img src='/happytail/img/foot.png' class="card-img"
+						alt="..." style="height: 30px; width: 40px"> <span >{{ username }}</span>
+				</p>
+			</div>
+
+			<div class="col-md-4">
+				<p class="card-text">{{ createDate }}</p>
+			</div>
+
+			<div class="col-md-4">
+				<p class="card-text">{{ category }}</p>
+			</div>
+
+		</div>
+
+		<div class="row no-gutters">
+			<div class="col-md-10">
+
+				<div class="row no-gutters">
+					<div class="col-md-12" style="height: 100px;">
+						<h2 class="card-title"  onclick="openTopicContentDialog({{ topicId }}, this)" >{{ title }}</h2>
+					</div>
+				</div>
+
+				<div class="row no-gutters">
+
+					<div class="col-md-3">
+						<i class="{{#isThumbsUp}} fas checked {{/isThumbsUp}}{{^isThumbsUp}} far {{/isThumbsUp}} fa-thumbs-up fa-2x" onclick="clickTopicThumbsUp({{ topicId }}, this)" ></i> 
+						<span class="card-text likeNum">{{ likeNum }}</span>
+					</div>
+
+					<div class="col-md-3">
+						<i class="far fa-comment-dots fa-2x"></i> 
+						<span class="card-text replyNum">{{ replyNum }}</span>
+					</div>
+
+					<div class="col-md-3 ">
+						<i class="far fa-hand-point-up fa-2x"></i>
+						<span class="card-text">{{ count }}</span>
+					</div>
+
+					<div class="col-md-3">
+						<i class="{{#isFollowed}} fas checked {{/isFollowed}}{{^isFollowed}} far {{/isFollowed}} fa-bookmark fa-2x" onclick="clickTopicFollowed({{ topicId }},this)"></i> 
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-md-2">
+			{{ #imageUrl }}
+			
+				<img src="{{ imageUrl }}" class="card-img" alt="...">
+				
+			{{ /imageUrl }}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{{ /records }}
+
+
+</div>
+
+---------------------------------------------------------------
+<div id="topicContent">
+
+            <div class="row justify-content-md-center">
+                <div class="col-1" style="margin:auto;">
+                    <i class="fas fa-chevron-left fa-3x"></i>
+                </div>
+                <div class="col-10">
+
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-11 mb-4">
+                            <p class="card-text"><img src='/happytail/img/foot.png' class="card-img"
+						alt="..." style="height: 60px; width: 80px;">
+                                <span>{{username}}</span></p>
+                        </div>
+                        <div class="col align-self-end">
+                            <i class="fas fa-times fa-2x mb-5" onclick="closeTopicContentDialog()"></i>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-md-center" style="height: 100px; text-align:center;">
+                        <div class="col-md-12">
+                            <h2 class="card-title">{{title}}</h2>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-md-center">
+                        <div class="col-2 align-self-start">
+                            <span>{{ category }}</span>
+                        </div>
+                        <div class="col-2">
+                            <span>{{createDate}}</span>
+                        </div>
+                        <div class="col-md-8">
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-md-center mb-5 mt-5" >
+                        <div class="col-md-12">
+                            {{{content}}}
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-md-center" style="height: 80px">
+                        <div class=" col-md-4">
+                            <i class="fas fa-thumbs-up fa-2x"></i>
+                            <i class="far fa-laugh-squint fa-2x"></i>
+                            <i class="far fa-sad-cry fa-2x"></i>
+                            <i class="far fa-surprise fa-2x"></i>
+                            <i class="fas fa-heart fa-2x"></i>
+                            <i class="far fa-angry fa-2x"></i>
+                            <span>{{ likeNum }}</span>
+                        </div>
+
+
+
+                        <div class="col-md-4">
+                            <i class="far fa-comment-dots fa-2x"></i>
+                            <span>{{ replyNum }}</span>
+                        </div>
+
+                        <div class="col-md-1">
+                            <i class="{{#isThumbsUp}}fas checked{{/isThumbsUp}} {{^isThumbsUp}} far{{/isThumbsUp}} fa-heart fa-2x" onclick="clickTopicThumbsUp({{ topicId }}, this)"></i>
+                        </div>
+
+                        <div class="col-md-1">
+                            <i class="{{#isFollowed}} fas checked {{/isFollowed}}{{^isFollowed}} far{{/isFollowed}} fa-bookmark fa-2x" onclick="clickTopicFollowed({{ topicId }},this)"></i>
+                        </div>
+
+                        <div class="col-md-1">
+                            <i class="fas fa-share fa-2x" onclick="shareLine()"></i>
+                        </div>
+
+                        <div class="col-md-1">
+                            <i class="fas fa-exclamation-triangle fa-2x" onclick="openAddReportDialog({{ topicId }}, this)"></i>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-1">
+                            <i class="fas fa-paw fa-2x"></i>
+                        </div>
+
+                        <div class="col-md-11">
+       						<form id="addReplyForm">
+                         	   <input type="text" class="form-control" name="replyContent" placeholder="Reply Here.....">
+                         		<input type="hidden" name="username" />
+                         		<input type="hidden" name="userId" />
+                         		<input type="hidden" name="topicId" value="{{topicId}}"/>
+                         </form> 
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="clickAddReply()">送出</button>
+                        
+
+                    </div>
+
+                </div>
+                <div class="col-1" style="margin:auto;">
+                    <i class="fas fa-chevron-right fa-3x"></i>
+                </div>
+            </div>
+</div>
+---------------------------------------------------------------
+<div id="replyContentList">
+ {{#records}}
+
+ <div class="replyList">
+        <div id="B{{ stage }}" class="card info-card">
+            <div class="card-header">
+
+                <div class="row">
+
+                    <div class="d-inline-block side-block">
+                        <img src="/happytail/img/blackPaw.png" class="card-img" alt="...">
+                    </div>
+
+
+                    <div class="d-inline-block center-block">
+                        <div class="row">
+                            <div class="col-4">
+                                <span>{{ username }}</span>
+                            </div>
+                            <div class="col-8">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <span class="stage">{{ stage }}</span>
+                                <span class="d-none stage-value">{{ stageValue }}</span>
+                            </div>
+                            <div class="col-8">
+                                <span>{{ createDate }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-inline-block side-block">
+                        <i
+                            class="{{#isThumbsUp}} fas checked {{/isThumbsUp}}{{^isThumbsUp}} far{{/isThumbsUp}} fa-heart fa-3x"></i>
+                        <span class="card-text">{{ likeNum }}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 ml-5">
+                        <span>{{ replyContent }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+ {{/records}}
+
+</div>
+---------------------------------------------------------------
+<div id="addTopic">
+<div class="row justify-content-md-center">
+        <div class="col-2">
+            <blockquote class="flow-text left">發表文章</blockquote>
+        </div>
+        <div class="col-9">
+        </div>
+        <div class="col-1">
+            <i class="fas fa-times fa-2x" onclick="closeAddTopicDialog()"></i>
+        </div>
+    </div>
+    <form>
+        <div class="form-group">
+
+            <div class="row justify-content-md-center">
+                <div class="col-12">
+                    <div class="form-check" style="margin-top: 15px;">
+                        <input class="form-check-input" type="radio" name="categoryId" id="life" value="1"
+                            required="required">
+                        <label class="form-check-label" for="life">
+                          		 生活
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="categoryId" id="knowledge" value="2">
+                        <label class="form-check-label" for="knowledge">
+                          		 資訊
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="categoryId" id="news" value="3" disabled>
+                        <label class="form-check-label" for="news">
+                            	新聞
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="categoryId" id="question" value="4" disabled>
+                        <label class="form-check-label" for="question">
+                            	發問
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="categoryId" id="adopt" value="5" disabled>
+                        <label class="form-check-label" for="adopt">
+                          	  認養
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="categoryId" id="other" value="6" disabled>
+                        <label class="form-check-label" for="other">
+                          	  其他
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-md-center">
+                <div class="col-12" style="margin-top: 15px;">
+                    <input class="form-control form-control-lg" type="text" placeholder="Title">
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 15px;">
+                <label for="exampleFormControlTextarea1">Content:</label>
+                <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="20" cols="40"
+                    required="required"></textarea>
+            </div>
+        </div>
+    </form>
+
+
+</div>
+---------------------------------------------------------------
+

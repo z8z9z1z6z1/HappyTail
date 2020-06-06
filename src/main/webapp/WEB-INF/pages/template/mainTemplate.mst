@@ -1,0 +1,9 @@
+<div id="notice-list">
+{{ #noticeList }}
+	<button type="button" class="dropdown-item" onclick="forwardNoticeLink({{ id }},'{{ link }}')">
+	    {{ message }}
+	</button>
+{{ /noticeList}}
+</div>
+
+------------------------------------------------------------------------

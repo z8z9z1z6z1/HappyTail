@@ -1,5 +1,6 @@
 package com.happytail.reservation.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,8 @@ public class Evaluation {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer evaluationId;
 	private Integer reservationId; 
-	private Integer Id;
+	private Integer id;
+	private String username;
 	private Double score;
 	private String content;
 	
@@ -35,11 +37,20 @@ public class Evaluation {
 	}
 	
 	
+	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	
 	public Integer getId() {
-		return Id;
+		return id;
 	}
 	public void setId(Integer id) {
-		Id = id;
+		this.id = id;
 	}
 	public Double getScore() {
 		return score;

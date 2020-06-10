@@ -59,6 +59,7 @@ public class ProductLikeDaoImpl implements ProductLikeDao {
 //		String newid = String.valueOf(memberId);
 		String hql ="from  ProductLike where petMemberId=:memberId";
 		Query<ProductLike> createQuery = s().createQuery(hql, ProductLike.class);
+		System.out.println("進入DAO");
 		createQuery.setParameter("memberId", memberId);
 		return createQuery.getResultList();
 	}

@@ -1,0 +1,583 @@
+<div id="myTopic">
+
+{{ #records }}
+
+<div class="myTopicItem row mt-3">
+    <div class="col-9">
+        <div class="card">
+            <div class="card-body">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <p class="card-text" style="font-size:24px">
+                            <img src='/happytail/img/foot.png' class="card-img"
+                                  alt="..." style="height: 30px; width: 40px">
+                            <span>{{ username }}</span>
+                        </p>
+                    </div>
+          
+                    <div class="col-md-4">
+                        <p class="card-text">{{ createDate }}</p>
+                    </div>
+          
+                    <div class="col-md-4">
+                        <p class="card-text">{{ category }}</p>
+                    </div>
+          
+                </div>
+          
+                <div class="row no-gutters">
+                    <div class="col-md-10">
+          
+                        <div class="row no-gutters">
+                            <div class="col-md-12" style="height: 100px;">
+                                <h2 class="card-title"  onclick="openTopicContentDialog({{ topicId }}, this)" >{{ title }}</h2>
+                            </div>
+                        </div>
+          
+                        <div class="row no-gutters">
+          
+                            <div class="col-md-3">
+                                <i class="far  fa-thumbs-up fa-2x" ></i> 
+                                <span class="card-text likeNum">{{ likeNum }}</span>
+                            </div>
+          
+                            <div class="col-md-3">
+                                <i class="far fa-comment-dots fa-2x"></i> 
+                                <span class="card-text replyNum">{{ replyNum }}</span>
+                            </div>
+          
+                            <div class="col-md-3 ">
+                                <i class="far fa-hand-point-up fa-2x"></i>
+                                <span class="card-text">{{ count }}</span>
+                            </div>
+          
+                            <div class="col-md-3">
+                                <i class="far fa-bookmark fa-2x"></i> 
+                            </div>
+                        </div>
+          
+                    </div>
+          
+                    <div class="col-md-2">
+                    {{ #imageUrl }}
+                      
+                        <img src="{{ imageUrl }}" class="card-img" alt="...">
+                          
+                    {{ /imageUrl }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="row mt-3" onclick="openUpdateDialog({{ topicId }}, this)">
+            <i class="fas fa-edit fa-2x" ></i>
+            <h4 class="ml-2">Update</h4>
+        </div>
+        <div class="row mt-3" onclick="deleteTopic({{ topicId }}, this)">
+            <i class="far fa-trash-alt fa-2x"></i>
+            <h4 class="ml-3">Delete</h4>
+        </div>
+    </div>
+</div>
+
+{{ /records }}
+
+</div>
+
+--------------------------------------------------------------------------------------
+
+<div id="myFollowList">
+
+{{ #records }}
+
+<div class="myTopicItem row mt-3">
+    <div class="col-9">
+        <div class="card">
+            <div class="card-body">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <p class="card-text" style="font-size:24px">
+                            <img src='/happytail/img/foot.png' class="card-img"
+                                  alt="..." style="height: 30px; width: 40px">
+                            <span>{{ username }}</span>
+                        </p>
+                    </div>
+          
+                    <div class="col-md-4">
+                        <p class="card-text">{{ createDate }}</p>
+                    </div>
+          
+                    <div class="col-md-4">
+                        <p class="card-text">{{ category }}</p>
+                    </div>
+          
+                </div>
+          
+                <div class="row no-gutters">
+                    <div class="col-md-10">
+          
+                        <div class="row no-gutters">
+                            <div class="col-md-12" style="height: 100px;">
+                                <h2 class="card-title"  onclick="openTopicContentDialog({{ topicId }}, this)" >{{ title }}</h2>
+                            </div>
+                        </div>
+          
+                        <div class="row no-gutters">
+          
+                            <div class="col-md-3">
+                                <i class="far  fa-thumbs-up fa-2x" ></i> 
+                                <span class="card-text likeNum">{{ likeNum }}</span>
+                            </div>
+          
+                            <div class="col-md-3">
+                                <i class="far fa-comment-dots fa-2x"></i> 
+                                <span class="card-text replyNum">{{ replyNum }}</span>
+                            </div>
+          
+                            <div class="col-md-3 ">
+                                <i class="far fa-hand-point-up fa-2x"></i>
+                                <span class="card-text">{{ count }}</span>
+                            </div>
+          
+                            <div class="col-md-3">
+                                <i class="far fa-bookmark fa-2x"></i> 
+                            </div>
+                        </div>
+          
+                    </div>
+          
+                    <div class="col-md-2">
+                    {{ #imageUrl }}
+                      
+                        <img src="{{ imageUrl }}" class="card-img" alt="...">
+                          
+                    {{ /imageUrl }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="row mt-3">
+            <i class="far fa-trash-alt fa-2x" onclick="deleteFollow({{ topicId }}, this)"></i>
+            <h4 class="ml-3">Delete</h4>
+        </div>
+    </div>
+</div>
+
+{{ /records }}
+
+</div>
+
+---------------------------------------------------------------------------------------------
+
+<div id="myLikeTopic">
+
+{{ #records }}
+
+<div class="myTopicItem row mt-3">
+    <div class="col-9">
+        <div class="card">
+            <div class="card-body">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <p class="card-text" style="font-size:24px">
+                            <img src='/happytail/img/foot.png' class="card-img"
+                                  alt="..." style="height: 30px; width: 40px">
+                            <span>{{ username }}</span>
+                        </p>
+                    </div>
+          
+                    <div class="col-md-4">
+                        <p class="card-text">{{ createDate }}</p>
+                    </div>
+          
+                    <div class="col-md-4">
+                        <p class="card-text">{{ category }}</p>
+                    </div>
+          
+                </div>
+          
+                <div class="row no-gutters">
+                    <div class="col-md-10">
+          
+                        <div class="row no-gutters">
+                            <div class="col-md-12" style="height: 100px;">
+                                <h2 class="card-title"  onclick="openTopicContentDialog({{ topicId }}, this)" >{{ title }}</h2>
+                            </div>
+                        </div>
+          
+                        <div class="row no-gutters">
+          
+                            <div class="col-md-3">
+                                <i class="far  fa-thumbs-up fa-2x" ></i> 
+                                <span class="card-text likeNum">{{ likeNum }}</span>
+                            </div>
+          
+                            <div class="col-md-3">
+                                <i class="far fa-comment-dots fa-2x"></i> 
+                                <span class="card-text replyNum">{{ replyNum }}</span>
+                            </div>
+          
+                            <div class="col-md-3 ">
+                                <i class="far fa-hand-point-up fa-2x"></i>
+                                <span class="card-text">{{ count }}</span>
+                            </div>
+          
+                            <div class="col-md-3">
+                                <i class="far fa-bookmark fa-2x"></i> 
+                            </div>
+                        </div>
+          
+                    </div>
+          
+                    <div class="col-md-2">
+                    {{ #imageUrl }}
+                      
+                        <img src="{{ imageUrl }}" class="card-img" alt="...">
+                          
+                    {{ /imageUrl }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="row mt-3">
+            <i class="far fa-trash-alt fa-2x" onclick="deleteThumbsUp({{ topicId }}, this)"></i>
+            <h4 class="ml-3">Delete</h4>
+        </div>
+    </div>
+</div>
+
+{{ /records }}
+
+</div>
+
+---------------------------------------------------------------------------------------------
+
+<div id="myReadHistory">
+
+{{ #records }}
+
+<div class="myTopicItem row mt-3">
+    <div class="col-9">
+        <div class="card">
+            <div class="card-body">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <p class="card-text" style="font-size:24px">
+                            <img src='/happytail/img/foot.png' class="card-img"
+                                  alt="..." style="height: 30px; width: 40px">
+                            <span>{{ username }}</span>
+                        </p>
+                    </div>
+          
+                    <div class="col-md-4">
+                        <p class="card-text">{{ createDate }}</p>
+                    </div>
+          
+                    <div class="col-md-4">
+                        <p class="card-text">{{ category }}</p>
+                    </div>
+          
+                </div>
+          
+                <div class="row no-gutters">
+                    <div class="col-md-10">
+          
+                        <div class="row no-gutters">
+                            <div class="col-md-12" style="height: 100px;">
+                                <h2 class="card-title"  onclick="openTopicContentDialog({{ topicId }}, this)" >{{ title }}</h2>
+                            </div>
+                        </div>
+          
+                        <div class="row no-gutters">
+          
+                            <div class="col-md-3">
+                                <i class="far  fa-thumbs-up fa-2x" ></i> 
+                                <span class="card-text likeNum">{{ likeNum }}</span>
+                            </div>
+          
+                            <div class="col-md-3">
+                                <i class="far fa-comment-dots fa-2x"></i> 
+                                <span class="card-text replyNum">{{ replyNum }}</span>
+                            </div>
+          
+                            <div class="col-md-3 ">
+                                <i class="far fa-hand-point-up fa-2x"></i>
+                                <span class="card-text">{{ count }}</span>
+                            </div>
+          
+                            <div class="col-md-3">
+                                <i class="far fa-bookmark fa-2x"></i> 
+                            </div>
+                        </div>
+          
+                    </div>
+          
+                    <div class="col-md-2">
+                    {{ #imageUrl }}
+                      
+                        <img src="{{ imageUrl }}" class="card-img" alt="...">
+                          
+                    {{ /imageUrl }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="row mt-3">
+            <i class="far fa-trash-alt fa-2x" onclick="deleteHistory({{ topicId }}, this)"></i>
+            <h4 class="ml-3">Delete</h4>
+        </div>
+    </div>
+</div>
+
+{{ /records }}
+
+</div>
+----------------------------------------------------------------------------------------
+
+<div id="topicContent">
+
+            <div class="row justify-content-md-center">
+                <div class="col-1" style="margin:auto;">
+                    <i class="fas fa-chevron-left fa-3x"></i>
+                </div>
+                <div class="col-10">
+
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-11 mb-4">
+                            <p class="card-text"><img src='/happytail/img/foot.png' class="card-img"
+						alt="..." style="height: 60px; width: 80px;">
+                                <span>{{username}}</span></p>
+                        </div>
+                        <div class="col align-self-end">
+                            <i class="fas fa-times fa-2x mb-5" onclick="closeTopicContentDialog()"></i>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-md-center" style="height: 100px; text-align:center;">
+                        <div class="col-md-12">
+                            <h2 class="card-title">{{title}}</h2>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-md-center">
+                        <div class="col-2 align-self-start">
+                            <span>{{ category }}</span>
+                        </div>
+                        <div class="col-2">
+                            <span>{{createDate}}</span>
+                        </div>
+                        <div class="col-md-8">
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-md-center mb-5 mt-5" >
+                        <div class="col-md-12 topicContentArea text-wrap">
+                            {{{content}}}
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-md-center" style="height: 80px">
+                        <div class=" col-md-6">
+                            <i class="fas fa-thumbs-up fa-2x"></i>
+                            <i class="far fa-laugh-squint fa-2x"></i>
+                            <i class="far fa-sad-cry fa-2x"></i>
+                            <i class="far fa-surprise fa-2x"></i>
+                            <i class="fas fa-heart fa-2x"></i>
+                            <i class="far fa-angry fa-2x"></i>
+                            <span>{{ likeNum }}</span>
+                        </div>
+
+
+
+                        <div class="col-md-6">
+                            <i class="far fa-comment-dots fa-2x"></i>
+                            <span>{{ replyNum }}</span>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-1" style="margin:auto;">
+                    <i class="fas fa-chevron-right fa-3x"></i>
+                </div>
+            </div>
+</div>
+---------------------------------------------------------------
+<div id="replyContentList">
+ {{#records}}
+
+ <div class="replyList">
+        <div id="B{{ stage }}" class="card info-card">
+            <div class="card-header">
+
+                <div class="row">
+
+                    <div class="d-inline-block side-block">
+                        <img src="/happytail/img/blackPaw.png" class="card-img" alt="...">
+                    </div>
+
+
+                    <div class="d-inline-block center-block">
+                        <div class="row">
+                            <div class="col-4">
+                                <span>{{ username }}</span>
+                            </div>
+                            <div class="col-8">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <span class="stage">{{ stage }}</span>
+                                <span class="d-none stage-value">{{ stageValue }}</span>
+                            </div>
+                            <div class="col-8">
+                                <span>{{ createDate }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-inline-block side-block">
+                        <i
+                            class="{{#isThumbsUp}} fas checked {{/isThumbsUp}}{{^isThumbsUp}} far{{/isThumbsUp}} fa-heart fa-3x" onclick="clickReplyThumbsUp({{ topicId }},{{ replyId }},this)"></i>
+                        <span class="card-text">{{ likeNum }}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 ml-5">
+                        {{{ replyContent }}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+ {{/records}}
+
+</div>
+---------------------------------------------------------------
+<div id="updateContent">
+
+					<div class="row justify-content-md-center">
+						<div class="col-2">
+							<blockquote class="flow-text left">修改文章</blockquote>
+						</div>
+						<div class="col-9"></div>
+						<div class="col-1">
+							<i class="fas fa-times fa-2x" onclick="closeUpdateTopicDialog()"></i>
+						</div>
+					</div>
+					<form id="addTopicForm">
+						<div class="form-group">
+
+							<div class="row justify-content-md-center categoryArea">
+								<div class="col-12">
+									<div class="form-check" style="margin-top: 15px;">
+										<input class="form-check-input" type="radio" name="categoryId"
+											id="life" value="1" required="required"> <label
+											class="form-check-label" for="life"> 生活 </label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="categoryId"
+											id="knowledge" value="2"> <label
+											class="form-check-label" for="knowledge"> 資訊 </label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="categoryId"
+											id="news" value="3"> <label class="form-check-label"
+											for="news"> 新聞 </label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="categoryId"
+											id="question" value="4"> <label
+											class="form-check-label" for="question"> 發問 </label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="categoryId"
+											id="adopt" value="5"> <label class="form-check-label"
+											for="adopt"> 認養 </label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="categoryId"
+											id="other" value="6"> <label
+											class="form-check-label" for="other"> 其他 </label>
+									</div>
+								</div>
+							</div>
+
+							<div class="row justify-content-md-center">
+								<div class="col-12" style="margin-top: 15px;">
+									<input name="title" class="form-control form-control-lg" type="text"
+										value= "{{title}}">
+								</div>
+							</div>
+							<div class="row justify-content-md-center">
+								<div class="col-12" style="margin-top: 15px;">
+									 <div id="updatetopicEditor"> {{{ content }}}
+									 </div>
+								</div>
+							</div>
+							<div class="row justify-content-md-center">
+								<div class="col-12" style="margin-top: 15px;">
+									<div class="form-check">
+ 										 <input class="form-check-input" type="checkbox" value="true" id="isCover" name="isCover">
+  											<label class="form-check-label" for="isCover">是否顯示封面圖片
+  											</label>
+								</div>
+							</div>
+							</div>
+							
+        					  <input type="hidden" name="content" id="articleContent" value="{{ content }}"/>        					  
+        					  <input type="hidden" name="imgList"/>
+         					  <input type="hidden" name="username" value="{{username}}" />
+         					  <input type="hidden" name="userId" value="{{userId}}" />
+         					  <input type="hidden" name="categoryId" value="{{categoryId}}" />
+         					  
+						</div>
+					</form>
+					<div class="row">
+						<div class="col-md-2 offset-md-5">
+							<button type="button" class="btn btn-info" name="add" onclick="clickUpdateTopic({{ topicId }},this)">確認修改</button>
+						</div>
+					</div>
+</div>
+
+
+--------------------------------------------------------------------------------------
+<div id="noticeList">
+
+{{ #records }}
+	<button type="button" class="d-flex justify-content-between list-group-item list-group-item-action {{ #isRead }} bg-light {{ /isRead }}" onclick="forwardNoticeLink({{ id }},'{{ link }}')"><span class="d-inline-block text-truncate" style="max-width: 500px;">{{ message }}</span><span>{{ createDate }}</span></button>
+{{ /records }}
+
+</div>
+
+---------------------------------------------------------------------------------------
+<div id="noticeListPagination">
+
+<li class="page-item">
+    <button class="page-link" href="#" aria-label="Previous" onclick="prevNoticePage()">
+        <span aria-hidden="true">&laquo;</span>
+    </button>
+</li>
+
+{{ #noticeList }}
+<li class="page-item">
+	<button class="page-link" onclick="toNoticePage({{ index }})">{{ index }}</button>
+</li>
+{{ /noticeList }}
+
+<li class="page-item">
+    <button class="page-link" aria-label="Next" onclick="nextNoticePage()">
+        <span aria-hidden="true">&raquo;</span>
+    </button>
+</li>
+
+
+</div>
+

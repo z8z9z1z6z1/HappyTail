@@ -38,12 +38,13 @@ public class ExampleAllInOne {
 //		System.out.println("fundingReconDetail: " + postFundingReconDetail());
 //		System.out.println("aioCheckOutALL: " + genAioCheckOutALL());
 //		System.out.println("aioCheckOutATM: " + genAioCheckOutATM());
-		System.out.println("aioCheckOutCVS: " + genAioCheckOutCVS());
+//		System.out.println("aioCheckOutCVS: " + genAioCheckOutCVS());
 //		System.out.println("aioCheckOutBARCODE: " + genAioCheckOutBARCODE());
 //		System.out.println("aioCheckOutDevide: " + genAioCheckOutDevide());
 //		System.out.println("aioCheckOutOneTime: " + genAioCheckOutOneTime());
 //		System.out.println("aioCheckOutPeriod: " + genAioCheckOutPeriod());
 //		System.out.println("aioCheckOutWebATM: " + genAioCheckOutWebATM());
+		System.out.println("UUID  " + UUID.randomUUID().toString().replaceAll("-", "").substring(0,20));
 	}
 	private static void initial(){
 		all = new AllInOne("");
@@ -143,8 +144,8 @@ public class ExampleAllInOne {
 	
 	public static String genAioCheckOutALL(){
 		AioCheckOutALL obj = new AioCheckOutALL();
-		obj.setMerchantTradeNo("testCompany0004");
-		obj.setMerchantTradeDate("2017/01/01 08:05:23");
+		obj.setMerchantTradeNo("testCompany0004"); 
+		obj.setMerchantTradeDate("2017/01/01 08:05:23"); 
 		obj.setTotalAmount("50");
 		obj.setTradeDesc("test Description");
 		obj.setItemName("TestItem");

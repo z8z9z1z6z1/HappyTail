@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -21,12 +22,12 @@ public class TopicImage {
 	private Integer id;
 	private Integer topidId;
 	private String imageUrl;
-	private String isCover;
+	private Boolean isCover = false;
 	private Timestamp createDate = new Timestamp(System.currentTimeMillis());
 	private Timestamp updateDate = new Timestamp(System.currentTimeMillis());
 
 	public TopicImage(Integer topidId, String imageUrl,
-	String isCover, Timestamp createDate, Timestamp updateDate) {
+			Boolean isCover, Timestamp createDate, Timestamp updateDate) {
 		this.topidId = topidId;
 		this.imageUrl = imageUrl;
 		this.isCover = isCover;
@@ -67,12 +68,13 @@ public class TopicImage {
 		this.imageUrl = imageUrl;
 	}
 
+	@Type(type="yes_no")
 	@Column(name = "isCover")
-	public String getIsCover() {
+	public Boolean getIsCover() {
 		return isCover;
 	}
 
-	public void setIsCover(String isCover) {
+	public void setIsCover(Boolean isCover) {
 		this.isCover = isCover;
 	}
 

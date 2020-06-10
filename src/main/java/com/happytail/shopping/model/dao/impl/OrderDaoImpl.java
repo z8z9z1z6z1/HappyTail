@@ -56,7 +56,7 @@ public class OrderDaoImpl implements OrderDao {
 	
 	@Override
 	public List<OrderBean> selectOrderByMemberIdNew(Integer Id){
-		String state ="成立";
+		String state ="未付款";
 		String hql = "from OrderBean o where o.memberId=:Id and o.state = :state order by o.orderId desc";
 //		String hql2 = "from OrderBean o where o.memberId=:Id and o.state = :state order by o.orderId desc";
 //		Query createQuery2 = s().createQuery(hql2);
@@ -70,7 +70,7 @@ public class OrderDaoImpl implements OrderDao {
 	
 	@Override
 	public List<OrderBean> selectOrderByMemberIdOld(Integer Id){
-		String state ="過期";
+		String state ="已付款";
 		String hql = "from OrderBean o where o.memberId=:Id and o.state = :state order by o.orderId desc";
 		Query<OrderBean> createQuery = getSession().createQuery(hql,OrderBean.class);
 		 createQuery.setParameter("Id", Id);
@@ -139,8 +139,8 @@ public class OrderDaoImpl implements OrderDao {
 	// 更新訂單狀態→完成
 	@Override
 	public String complete(int orderId) {
-		String hql = "from OrderBean where state = 成立  and orderId=:orderId";
-		Query<OrderBean> createQuery = getSession().createQuery(hql, OrderBean.class);
+		String hql = "from OrderBean where state = 未付款  and orderId=:orderId";
+		Query<OrderBean> createQuery = getSession().createQuery(hql, OrderBean.class).setParameter("orderId", orderId);
 		OrderBean singleResult = createQuery.getSingleResult();
 		OrderBean odBean = (OrderBean) singleResult;
 		if (odBean != null) {
@@ -165,6 +165,20 @@ public class OrderDaoImpl implements OrderDao {
 			return ("訂單逾時");
 		}
 		return "找不到訂單";
+	}
+	
+	
+	@Override
+	public String payMoney(int orderId) {
+		String state="已付款";
+		String hql="update OrderBean o set o.state=:state where o.orderId=:orderId";
+
+		Query<?> createQuery = s().createQuery(hql);
+		createQuery.setParameter("state", state);
+		createQuery.setParameter("orderId", orderId);
+		createQuery.executeUpdate();
+
+		return "付款訂單";
 	}
 	
 	//新增訂單

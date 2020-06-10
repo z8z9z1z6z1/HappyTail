@@ -2,6 +2,8 @@ package com.happytail.reservation.model.dao;
 
 
 
+import static org.hamcrest.CoreMatchers.describedAs;
+
 import java.util.List;
 
 import org.hibernate.Session;
@@ -42,7 +44,7 @@ public class EvaluationDao_impl implements EvaluationDao{
 	
 	@Override
 	public List<Evaluation> queryAllEvaluation() {
-		Query<Evaluation> bean = getSession().createQuery("FROM Evaluation", Evaluation.class);
+		Query<Evaluation> bean = getSession().createQuery("FROM Evaluation order by evaluationId", Evaluation.class);
 		List<Evaluation> list = bean.list();
 		return list;
 	}
@@ -73,6 +75,8 @@ public class EvaluationDao_impl implements EvaluationDao{
 	private final String AllBackViewCounts = "SELECT COUNT(*) FROM com.happytail.reservation.model.backView";
 	
 	
+	
+	
 	@Override
 	public Page<backView> getAllEvaluationlist(PageInfo pageinfo) {
 		
@@ -85,6 +89,7 @@ public class EvaluationDao_impl implements EvaluationDao{
 	}
 	
 	private final String SelectByDateEvaluationView = "FROM com.happytail.reservation.model.backView WHERE createMonth=:createMonth ORDER BY createDate ASC";
+	private final String QueryByCreateMonthBackViewCounts = "SELECT COUNT(*) FROM com.happytail.reservation.model.backView where createMonth=:createMonth";
 	
 	@Override
 	public Page<backView> queryByDateEvaluationView(String createMonth, PageInfo pageinfo) {
@@ -92,10 +97,49 @@ public class EvaluationDao_impl implements EvaluationDao{
 		Integer startPosition = pageinfo.getPageSize() * (pageinfo.getPageNum() -1);
 		List<backView> resultList = getSession().createQuery(SelectByDateEvaluationView, backView.class)
 				.setParameter("createMonth", createMonth).setFirstResult(startPosition).setMaxResults(pageinfo.getPageSize()).getResultList();
-		Query query = getSession().createQuery(AllBackViewCounts);
+		Query query = getSession().createQuery(QueryByCreateMonthBackViewCounts).setParameter("createMonth", createMonth);
 		Long totalCount = (Long)query.uniqueResult();
 	
 		return new Page<backView>(resultList,pageinfo.getPageNum(),pageinfo.getPageSize(),totalCount);
+	}
+
+	@Override
+	public List<Evaluation> queryMyEvaluation(Integer id) {
+		Query<Evaluation> bean = getSession().createQuery("FROM Evaluation where id=:id order by evaluationId ", Evaluation.class);
+		bean.setParameter("id", id);
+		List<Evaluation> list = bean.list();
+		return list;
+	}
+
+	@Override
+	public Evaluation updateEvaluation(Evaluation bean) {
+		Evaluation et = getSession().get(Evaluation.class,bean.getEvaluationId());
+		et.setEvaluationId(bean.getEvaluationId());
+		et.setScore(bean.getScore());
+		et.setContent(bean.getContent());
+		getSession().update(et);
+		return et;
+	}
+
+	@Override
+	public Evaluation queryByEvaluationId(Integer evaluationId) {
+		Evaluation et = getSession().get(Evaluation.class,evaluationId);
+		return et;
+	}
+
+	@Override
+	public Evaluation deleteByEvaluationId(Integer evaluationId) {
+		Evaluation et = getSession().get(Evaluation.class, evaluationId);
+		getSession().delete(et);
+		return et;
+	}
+
+	@Override
+	public List<backView> queryByreservationId(Integer reservationId) {
+		Query<backView> bean = getSession().createQuery("FROM backView where reservationId=:reservationId order by reservationId ", backView.class);
+		bean.setParameter("reservationId", reservationId);
+		List<backView> list = bean.list();
+		return list;
 	}
 
 

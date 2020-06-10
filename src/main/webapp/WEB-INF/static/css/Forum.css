@@ -1,4 +1,4 @@
-body{
+body {
 	background-color: #e3f2fd;
 }
 
@@ -14,7 +14,7 @@ body{
 }
 
 .browser {
-	background: white;
+	background: #ecebcc;
 }
 
 .browser>h2, p {
@@ -27,9 +27,8 @@ body{
 }
 
 #topicListArea
-.checked ,
-#topicContentDialog
-.checked{
+.checked, #topicContentDialog
+.checked {
 	color: #0d47a1;
 }
 
@@ -39,7 +38,7 @@ body{
 }
 
 .center-block {
-    width: calc(100% - (100px));
+	width: calc(100% - ( 100px));
 	margin: 0
 }
 
@@ -54,7 +53,63 @@ body{
 	width: 100%;
 }
 
-#addTopicDialog .modal-body{
+#addTopicDialog .modal-body {
 	margin: 40px;
-	z-index: 99;
+}
+
+/* #addTopicDialog #topicEditor { */
+/* 	margin-left: 50px; */
+/* } */
+:root { 
+	--ck-z-default: 1080;
+}
+
+#topicEditor {
+	height: 300px;
+	border: 1px solid lightgrey;
+	width: 100%;
+}
+
+.topicContentArea img {
+	max-width: 100%;
+}
+
+#replyEditor {
+	border: 1px solid lightgrey;
+	width: 100%;
+}
+
+#like-area {
+	background-color: #e4e0d1;
+	border-radius: 30px;
+    position: absolute;
+    top: -55px;
+    left: -80px;
+    transition: 0.5s;
+}
+
+/* width */
+#topicContentDialog .modal-body::-webkit-scrollbar,
+#stageListDialog .modal-body::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+#topicContentDialog .modal-body::-webkit-scrollbar-track,
+#stageListDialog .modal-body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 5px;
+}
+ 
+/* Handle */
+#topicContentDialog .modal-body::-webkit-scrollbar-thumb,
+#stageListDialog .modal-body::-webkit-scrollbar-thumb {
+  background: rgb(141, 141, 141); 
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+#topicContentDialog .modal-body::-webkit-scrollbar-thumb:hover,
+#stageListDialog .modal-body::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0; 
 }

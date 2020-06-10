@@ -1,5 +1,6 @@
 package com.happytail.forum.model.dao;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.NoResultException;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.happytail.forum.model.History;
+import com.happytail.forum.model.Hit;
 
 @Repository
 public class HistoryDAOImpl implements HistoryDAO {
@@ -30,6 +32,7 @@ public class HistoryDAOImpl implements HistoryDAO {
 	private final String selectTopicIdList = "SELECT topicId FROM com.happytail.forum.model.History WHERE userId=:userId";
 	private final String selectByTopicIdAndUserId = "FROM com.happytail.forum.model.History WHERE topicId=:topicId AND userId=:userId";
 
+
 	@Override
 	public History insert(History history) {
 		try {
@@ -42,6 +45,21 @@ public class HistoryDAOImpl implements HistoryDAO {
 			return null;
 		}
 
+		return history;
+	}
+	
+	@Override
+	public History update(History history) {
+		try {
+			if (history != null) {
+				getSession().update(history);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Update fail");
+			return null;
+		}
 		return history;
 	}
 
@@ -102,5 +120,24 @@ public class HistoryDAOImpl implements HistoryDAO {
 
 		return list;
 	}
+
+	@Override
+	public History selectByTopicIdAndUserId(Integer topicId, Integer userId) {
+		History history = null;
+		
+		try {
+
+			history = getSession().createQuery(selectByTopicIdAndUserId,History.class)
+				.setParameter("topicId", topicId).setParameter("userId", userId).getSingleResult();
+		
+		} catch (NoResultException e) {
+			e.printStackTrace();
+			System.out.println("No result");
+			return null;
+		}
+		return history;
+	}
+	
+	
 
 }

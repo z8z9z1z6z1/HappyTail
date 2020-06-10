@@ -40,138 +40,7 @@
 					</a>
 				</li>
 				<li class="nav-item d-none d-sm-inline-block">
-					<a href="adminIndex" class="nav-link">Home</a>
-				</li>
-				<li class="nav-item d-none d-sm-inline-block">
-					<a href="#" class="nav-link">Contact</a>
-				</li>
-			</ul>
-
-			<!-- SEARCH FORM -->
-			<form class="form-inline ml-3">
-				<div class="input-group input-group-sm">
-					<input class="form-control form-control-navbar" type="search" placeholder="Search"
-						aria-label="Search">
-					<div class="input-group-append">
-						<button class="btn btn-navbar" type="submit">
-							<i class="fas fa-search"></i>
-						</button>
-					</div>
-				</div>
-			</form>
-
-			<!-- Right navbar links -->
-			<ul class="navbar-nav ml-auto">
-				<!-- Messages Dropdown Menu -->
-				<li class="nav-item dropdown">
-					<a class="nav-link" data-toggle="dropdown" href="#">
-						<i class="far fa-comments"></i>
-						<span class="badge badge-danger navbar-badge">3</span>
-					</a>
-					<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-						<a href="#" class="dropdown-item">
-							<!-- Message Start -->
-							<div class="media">
-								<img src="${pageContext.request.contextPath}/dist/img/user1-128x128.jpg" alt="User Avatar"
-									class="img-size-50 mr-3 img-circle">
-								<div class="media-body">
-									<h3 class="dropdown-item-title">
-										Brad Diesel
-										<span class="float-right text-sm text-danger">
-											<i class="fas fa-star"></i>
-										</span>
-									</h3>
-									<p class="text-sm">Call me whenever you can...</p>
-									<p class="text-sm text-muted">
-										<i class="far fa-clock mr-1"></i>
-										4 Hours Ago
-									</p>
-								</div>
-							</div>
-							<!-- Message End -->
-						</a>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item">
-							<!-- Message Start -->
-							<div class="media">
-								<img src="${pageContext.request.contextPath}/dist/img/user8-128x128.jpg" alt="User Avatar"
-									class="img-size-50 img-circle mr-3">
-								<div class="media-body">
-									<h3 class="dropdown-item-title">
-										John Pierce
-										<span class="float-right text-sm text-muted">
-											<i class="fas fa-star"></i>
-										</span>
-									</h3>
-									<p class="text-sm">I got your message bro</p>
-									<p class="text-sm text-muted">
-										<i class="far fa-clock mr-1"></i>
-										4 Hours Ago
-									</p>
-								</div>
-							</div>
-							<!-- Message End -->
-						</a>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item">
-							<!-- Message Start -->
-							<div class="media">
-								<img src="${pageContext.request.contextPath}/dist/img/user3-128x128.jpg" alt="User Avatar"
-									class="img-size-50 img-circle mr-3">
-								<div class="media-body">
-									<h3 class="dropdown-item-title">
-										Nora Silvester
-										<span class="float-right text-sm text-warning">
-											<i class="fas fa-star"></i>
-										</span>
-									</h3>
-									<p class="text-sm">The subject goes here</p>
-									<p class="text-sm text-muted">
-										<i class="far fa-clock mr-1"></i>
-										4 Hours Ago
-									</p>
-								</div>
-							</div>
-							<!-- Message End -->
-						</a>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-					</div>
-				</li>
-				<!-- Notifications Dropdown Menu -->
-				<li class="nav-item dropdown">
-					<a class="nav-link" data-toggle="dropdown" href="#">
-						<i class="far fa-bell"></i>
-						<span class="badge badge-warning navbar-badge">15</span>
-					</a>
-					<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-						<span class="dropdown-item dropdown-header">15 Notifications</span>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item">
-							<i class="fas fa-envelope mr-2"></i>
-							4 new messages
-							<span class="float-right text-muted text-sm">3 mins</span>
-						</a>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item">
-							<i class="fas fa-users mr-2"></i>
-							8 friend requests
-							<span class="float-right text-muted text-sm">12 hours</span>
-						</a>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item">
-							<i class="fas fa-file mr-2"></i>
-							3 new reports
-							<span class="float-right text-muted text-sm">2 days</span>
-						</a>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-					</div>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-						<i class="fas fa-th-large"></i>
-					</a>
+					<a href="admin-Index" class="nav-link">Home</a>
 				</li>
 			</ul>
 		</nav>
@@ -180,14 +49,15 @@
 		<!-- Main Sidebar Container -->
 		<aside class="main-sidebar sidebar-dark-primary elevation-4">
 			<!-- Brand Logo -->
-			<a href="adminIndex" class="brand-link">
-				<img src="${pageContext.request.contextPath}/admin/dist/img/AdminLTELogo.png"
-					alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-				<span class="brand-text font-weight-light">AdminLTE 3</span>
+			<a href="admin-Index" class="brand-link">
+				<img src="admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+					class="brand-image img-circle elevation-3" style="opacity: .8">
+				<span class="brand-text font-weight-light">後臺管理</span>
 			</a>
 
 			<!-- Sidebar -->
 			<div class="sidebar">
+
 				<!-- Sidebar Menu -->
 				<nav class="mt-2">
 					<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
@@ -197,7 +67,7 @@
 						<li class="nav-item">
 							<a href="admin-Index" class="nav-link">
 								<i class="nav-icon fas fa-tachometer-alt"></i>
-								<p>首頁</p>
+								<p>後台首頁</p>
 							</a>
 						</li>
 
@@ -240,14 +110,14 @@
 						</li>
 
 						<li class="nav-item">
-							<a href="admin-AllProjects-json" class="nav-link">
+							<a href="<c:url value='/pageBackView?pageNum=1' />" class="nav-link">
 								<i class="nav-icon fas fa-table"></i>
 								<p>預約管理</p>
 							</a>
 						</li>
 
 						<li class="nav-item">
-							<a href="admin-allMembersJSON" class="nav-link">
+							<a href="admin-forum" class="nav-link">
 								<i class="nav-icon fas fa-table"></i>
 								<p>討論區管理</p>
 							</a>
@@ -273,8 +143,6 @@
 					<div class="row mb-2">
 						<div class="col-sm-6">
 							<h1>訂單資料</h1>
-							<a href='<c:url value='admin-AllOrders-json' />'>Json</a>
-
 						</div>
 					</div>
 				</div>
@@ -294,33 +162,22 @@
 										<thead>
 											<tr>
 												<th>訂單編號</th>
-												<th>會員姓名</th>
-												<th>價格</th>
+												<th>會員帳號</th>
+												<th>購買價格</th>
 												<th>購買時間</th>
+												<th>地址</th>
 												<th>備註</th>
 												<th>狀態</th>
 												<th>修改</th>
 											</tr>
 										</thead>
-
-										<tbody>
-											<tr>
-												<td>1</td>
-												<td>david</td>
-												<td>133</td>
-												<td>2029-12-22</td>
-												<td></td>
-												<td>成立</td>
-												<td>1</td>
-											</tr>
-										</tbody>
-
 										<tfoot>
 											<tr>
 												<th>訂單編號</th>
-												<th>會員姓名</th>
-												<th>價格</th>
+												<th>會員帳號</th>
+												<th>購買價格</th>
 												<th>購買時間</th>
+												<th>地址</th>
 												<th>備註</th>
 												<th>狀態</th>
 												<th>修改</th>
@@ -362,6 +219,42 @@
 	</div>
 	<!-- ./wrapper -->
 
+	<div class="modal fade" id="Topic">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">訂單明細</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" id="detail">
+					<h4>總金額：</h4>
+					<p id="totalPrice"></p> 
+					<h4>購買時間：</h4>
+					<p id="orderDate"></p>
+					<table class="table table-striped" id="tbale">
+                    	<thead>
+                    		<tr>
+                      			<th>編號</th>
+                      			<th>商品名稱</th>
+                      			<th>商品數量</th>
+                      			<th>購買價格</th>
+                   			</tr>
+                  		</thead>
+                  		<tbody id="tbody"></tbody>
+                  </table>					
+				</div>
+				<div class="modal-footer justify-content-between">
+					<button type="button" id="close" class="btn btn-default"data-dismiss="modal">關閉</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
 
 
 
@@ -385,7 +278,110 @@
 	<!-- page script -->
 	//所有訂單
 	<script>
-		
+		$(document)
+				.ready(
+						function() {
+							$('#allOrders')
+									.DataTable(
+											{
+												searching : false,
+												"ajax" : {
+													"url" : "<c:url value='admin-AllOrders-json' />",
+													"dataSrc" : ""
+												},
+												"columns" : [
+														{
+															"data" : "orderId"
+														},
+														{
+															"data" : "memberId"
+														},
+														{
+															"data" : "totalPrice"
+														},
+														{
+															"data" : "orderDate"
+														},
+														{
+															"data" : "shippingAddress"
+														},
+														{
+															"data" : "text"
+														},
+														{
+															"data" : "state",
+															"render" : function(
+																	data, type,
+																	full, meta) {
+																if (data == "完成") {
+																	return data = '<span class="badge badge-success">完成</span>';
+																} else if (data == "未付款") {
+																	return data = '<span class="badge badge-secondary">未付款</span>';
+																} else if (data == "已付款") {
+																	return data = '<span class="badge badge-warning">已付款</span>';
+																} else if (data == "失敗") {
+																	return data = '<span class="badge badge-danger">失敗</span>';
+																}
+															}
+
+														}
+
+												],
+												columnDefs : [ {
+													//最後一行加上修改按鈕
+													"data" : "orderId",
+													targets : 7,
+													orderable : false,
+													render : function(data,
+															type, row, meta) {
+														return "<button type='button' class='btn btn-info btn-sm' data-toggle='modal' data-target='#Topic' id='" + data + "'><i class='fas fa-eye'></i>查看訂單</button>&emsp;";
+// 																+ "<button type='button' class='btn btn-primary btn-sm' data-toggle='modal' data-target='#member-update' id='" + data + "'><i class='fas fa-pencil-alt'></i>編輯</button>";
+
+													}
+												} ]
+											});
+						});
+	</script>
+	<script type="text/javascript">
+		$(document).on('click', '.btn', function() {
+			var id = $(this).attr("id");
+
+			$.ajax({
+				url : "<c:url value='admin-getOrderItem-json/" + id + "' />",
+				method : "GET",
+				async : false,
+				data : {},
+				dataType : "json",
+				success : function(data) {
+					var i=0;
+					$.each(data, function() {
+						$("#name").append(data[i]['description']);
+						$("#unitPrice").append(data[i]['unitPrice']);
+						$("#quantity").append(data[i]['quantity']);
+						$("#totalPrice").empty().append(data[i]['orderBean']['totalPrice']);
+						$("#orderDate").empty().append(data[i]['orderBean']['orderDate']);
+
+						var tr="<tr>";
+						tr += "<td>" + data[i]['seqno'] + "</td>";
+						tr += "<td>" + data[i]['description'] + "</td>";
+						tr += "<td>" + data[i]['quantity'] + "</td>";
+						tr += "<td>" + data[i]['unitPrice'] + "</td>";
+						tr += "</tr>";
+						$('#tbody').append(tr);
+						i++;
+						})
+				}
+			})
+		})
+	</script>
+	<script>
+		$('#close').click(function() {
+			$('#name').empty();
+			$('#unitPrice').empty();
+			$('#quantity').empty();
+			$('#totalPrice').empty();
+			$('#tbody').empty();
+			})
 	</script>
 </body>
 

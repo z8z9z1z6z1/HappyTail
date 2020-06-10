@@ -48,7 +48,6 @@ public class ReservationDaoImpl implements ReservationDao{
 				bean.getCreateDate(),bean.getAvailableDateTime(),
 				bean.getPetName()).run();
 		
-//		new NoticeService().sendReservationNotice(bean);
 		return bean;
 	}
 

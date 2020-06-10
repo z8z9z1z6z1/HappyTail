@@ -12,7 +12,7 @@ public interface FavorateDAO{
 	public boolean delete(Integer userId);
 		
 	public Favorate selectByUserIdAndCategoryId(Integer userId, Integer categoryId);
-	
+		
 	public List<Integer> selectCategoryIdList(Integer userId);
 	
 	public List<Favorate> selectFavorateCategoryList(Integer userId);	

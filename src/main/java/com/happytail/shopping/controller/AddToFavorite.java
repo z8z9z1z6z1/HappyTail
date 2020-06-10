@@ -33,7 +33,7 @@ public class AddToFavorite {
 
 	@GetMapping(value = "/addToLike")
 	public ResponseEntity<ProductLike> addFacorite(
-			@RequestParam("productId") Integer productId, Model m,@SessionAttribute("logionOK")PetMembers pMembers) {
+			@RequestParam("productId") Integer productId, Model m,@SessionAttribute("LoginOK")PetMembers pMembers) {
 		ProductBean pBean = pdao.selectOne(productId);
 		if(pMembers==null) {
 			return null;

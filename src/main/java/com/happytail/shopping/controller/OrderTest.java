@@ -1,6 +1,8 @@
 package com.happytail.shopping.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -101,7 +103,11 @@ public class OrderTest {
 	}
 	
 	
-	
+	public void test() {
+		Vector<Integer> a=new Vector<Integer>();
+		List<?> list =new ArrayList();
+		
+	}
 	
 	
 }

@@ -41,6 +41,7 @@ public class GreenPay {
 	public String getGreen(Model m,@SessionAttribute("LoginOK")PetMembers petMembers,@PathVariable("oId") Integer oId) {
 		try {
 			OrderBean oBean = odao.selectOrder(oId);
+			odao.payMoney(oId);
 			AllInOne all = new AllInOne("");
 		AioCheckOutCVS obj = new AioCheckOutCVS();
 		InvoiceObj invoice = new InvoiceObj();

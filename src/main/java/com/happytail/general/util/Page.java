@@ -25,7 +25,7 @@ public class Page<T>{
 		this.records = records;
 		this.pageSize = pageSize;
 		this.currentPage = pageNum;
-		this.totalPages = (int) Math.ceil(totalCount/pageSize);
+		this.totalPages = (int) Math.ceil(((double) totalCount)/pageSize);
 		this.totalNum = (int)totalCount;
 	}
 		
@@ -86,7 +86,7 @@ public class Page<T>{
 		return this.currentPage == this.totalPages;
 	}
 	
-	public boolean getIsHastNext() {
+	public boolean getIsHasNext() {
 		return this.currentPage < this.totalPages;
 	}
 }

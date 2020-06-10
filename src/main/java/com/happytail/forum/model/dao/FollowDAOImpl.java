@@ -33,6 +33,10 @@ public class FollowDAOImpl implements FollowDAO {
 	private final String selectTopicIdList =
 			"SELECT topicId FROM com.happytail.forum.model.Follow WHERE userId=:userId"; 
 	
+	private final String selectFollowList =
+			"FROM com.happytail.forum.model.Follow WHERE  topicId=:topicId";
+
+	
 	@Override
 	public Follow insert(Follow follow) {
 		try {
@@ -82,7 +86,7 @@ public class FollowDAOImpl implements FollowDAO {
 	}
 
 	@Override
-	public Follow select(Integer topicId, Integer userId) {
+	public Follow selectByTopicIdAndUserId(Integer topicId, Integer userId) {
 		Query<Follow> check = getSession().createQuery(selectIsFollowed, Follow.class);
 		check.setParameter("topicId", topicId);
 		check.setParameter("userId", userId);
@@ -98,7 +102,7 @@ public class FollowDAOImpl implements FollowDAO {
 	}
 
 	@Override
-	public List<Integer> selectTopicIdList(Integer userId) {
+	public List<Integer> selectTopicIdListByUserId(Integer userId) {
 		Query<Integer> check = getSession().createQuery(selectTopicIdList,Integer.class);
 		check.setParameter("userId", userId);
 		
@@ -110,6 +114,19 @@ public class FollowDAOImpl implements FollowDAO {
 		}
 
 		return list;
+	}
+
+	@Override
+	public List<Follow> selectTopicIdListByTopicId(Integer topicId) {
+
+		List<Follow> list = getSession().createQuery(selectFollowList, Follow.class)
+				.setParameter("topicId", topicId)
+				.getResultList();
+		
+		return list;
+		
 	}		
+	
+	
 		
 }

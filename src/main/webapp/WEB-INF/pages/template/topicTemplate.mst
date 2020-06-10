@@ -238,6 +238,7 @@ $("#target").html(data);
 
 				<div class="row no-gutters">
 					<div class="col-md-12" style="height: 100px;">
+						<span class="d-none topicId">{{ topicId }}</span>
 						<h2 class="card-title"  onclick="openTopicContentDialog({{ topicId }}, this)" >{{ title }}</h2>
 					</div>
 				</div>
@@ -288,7 +289,7 @@ $("#target").html(data);
 
             <div class="row justify-content-md-center">
                 <div class="col-1" style="margin:auto;">
-                    <i class="fas fa-chevron-left fa-3x"></i>
+                    <i class="fas fa-chevron-left fa-3x pointer" onclick="getPreviousTopic()"></i>
                 </div>
                 <div class="col-10">
 
@@ -321,19 +322,16 @@ $("#target").html(data);
                     </div>
 
                     <div class="row justify-content-md-center mb-5 mt-5" >
-                        <div class="col-md-12">
+                        <div class="col-md-12 topicContentArea text-wrap">
                             {{{content}}}
                         </div>
                     </div>
 
                     <div class="row justify-content-md-center" style="height: 80px">
                         <div class=" col-md-4">
-                            <i class="fas fa-thumbs-up fa-2x"></i>
-                            <i class="far fa-laugh-squint fa-2x"></i>
-                            <i class="far fa-sad-cry fa-2x"></i>
-                            <i class="far fa-surprise fa-2x"></i>
-                            <i class="fas fa-heart fa-2x"></i>
-                            <i class="far fa-angry fa-2x"></i>
+                            <i class="fas fa-thumbs-up fa-2x checked"></i>
+                            <i class="far fa-surprise fa-2x text-warning"></i>
+		                    <i class="fas fa-heart fa-2x text-danger"></i>
                             <span>{{ likeNum }}</span>
                         </div>
 
@@ -344,8 +342,16 @@ $("#target").html(data);
                             <span>{{ replyNum }}</span>
                         </div>
 
-                        <div class="col-md-1">
-                            <i class="{{#isThumbsUp}}fas checked{{/isThumbsUp}} {{^isThumbsUp}} far{{/isThumbsUp}} fa-heart fa-2x" onclick="clickTopicThumbsUp({{ topicId }}, this)"></i>
+                        <div class="col-md-1 position-relative">
+                            <i id="like" class="{{#isThumbsUp}}fas checked{{/isThumbsUp}} {{^isThumbsUp}} far{{/isThumbsUp}} fa-thumbs-up fa-2x" onmouseenter="showLikeArea()" onmouseout="hideLikeArea()" onclick="clickTopicThumbsUp({{ topicId }}, this)"></i>
+                        	<div id="like-area" class="d-none px-2 py-2 text-nowrap">
+		                        <i class="fas fa-thumbs-up fa-2x pointer" onclick="chooseLike({{ topicId }},1,this)"></i>
+		                        <i class="far fa-laugh-squint fa-2x pointer" onclick="chooseLike({{ topicId }},2,this)"></i>
+		                        <i class="far fa-sad-cry fa-2x pointer" onclick="chooseLike({{ topicId }},3,this)"></i>
+		                        <i class="far fa-surprise fa-2x pointer" onclick="chooseLike({{ topicId }},4,this)"></i>
+		                        <i class="fas fa-heart fa-2x pointer" onclick="chooseLike({{ topicId }},5,this)"></i>
+		                        <i class="far fa-angry fa-2x pointer" onclick="chooseLike({{ topicId }},6,this)"></i>
+		                    </div>
                         </div>
 
                         <div class="col-md-1">
@@ -357,31 +363,25 @@ $("#target").html(data);
                         </div>
 
                         <div class="col-md-1">
-                            <i class="fas fa-exclamation-triangle fa-2x" onclick="openAddReportDialog({{ topicId }}, this)"></i>
+                            <i class="fas fa-exclamation-triangle fa-2x" onclick="openAddReportDialog({{ topicId }})"></i>
                         </div>
                     </div>
 
-                    <div class="row justify-content-md-center">
-                        <div class="col-md-1">
-                            <i class="fas fa-paw fa-2x"></i>
-                        </div>
-
-                        <div class="col-md-11">
+                    <div class="row justify-content-md-center d-none">
+                        <div class="col-md-12">
        						<form id="addReplyForm">
-                         	   <input type="text" class="form-control" name="replyContent" placeholder="Reply Here.....">
+       							<input type="hidden" name="replyContent"/>
+       							<input type="hidden" name="atUserIdList"/>
                          		<input type="hidden" name="username" />
                          		<input type="hidden" name="userId" />
                          		<input type="hidden" name="topicId" value="{{topicId}}"/>
-                         </form> 
+	                         </form> 
                         </div>
-                        <button type="button" class="btn btn-primary" onclick="clickAddReply()">送出</button>
-                        
-
                     </div>
 
                 </div>
                 <div class="col-1" style="margin:auto;">
-                    <i class="fas fa-chevron-right fa-3x"></i>
+                    <i class="fas fa-chevron-right fa-3x pointer" onclick="getNextTopic()"></i>
                 </div>
             </div>
 </div>
@@ -390,7 +390,7 @@ $("#target").html(data);
  {{#records}}
 
  <div class="replyList">
-        <div id="B{{ stage }}" class="card info-card">
+        <div id="{{ stage }}" class="card info-card">
             <div class="card-header">
 
                 <div class="row">
@@ -403,6 +403,7 @@ $("#target").html(data);
                     <div class="d-inline-block center-block">
                         <div class="row">
                             <div class="col-4">
+                            	<span class="reply-userId d-none">{{ userId }}</span>
                                 <span>{{ username }}</span>
                             </div>
                             <div class="col-8">
@@ -420,13 +421,13 @@ $("#target").html(data);
                     </div>
                     <div class="d-inline-block side-block">
                         <i
-                            class="{{#isThumbsUp}} fas checked {{/isThumbsUp}}{{^isThumbsUp}} far{{/isThumbsUp}} fa-heart fa-3x"></i>
+                            class="{{#isThumbsUp}} fas checked {{/isThumbsUp}}{{^isThumbsUp}} far{{/isThumbsUp}} fa-heart fa-3x" onclick="clickReplyThumbsUp({{ topicId }},{{ replyId }},this)"></i>
                         <span class="card-text">{{ likeNum }}</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 ml-5">
-                        <span>{{ replyContent }}</span>
+                        {{{ replyContent }}}
                     </div>
                 </div>
             </div>

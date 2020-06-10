@@ -4,6 +4,7 @@ import javax.persistence.NoResultException;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +20,9 @@ public class HitDAOImpl implements HitDAO {
 	public HitDAOImpl() {
 		
 	}
+	
+	
+	private final String selectByTopicId = "From com.happytail.forum.model.Hit WHERE topicId=:topicId";
 
 	public Session getSession() {
 		Session session = sessionFactory.getCurrentSession();
@@ -71,5 +75,24 @@ public class HitDAOImpl implements HitDAO {
 
 		return hit;
 	}
+
+	@Override
+	public Hit selectByTopicId(Integer topicId) {
+		Hit hit = null;
+		
+		try {
+
+		hit = getSession().createQuery(selectByTopicId,Hit.class)
+				.setParameter("topicId", topicId).getSingleResult();
+		
+		} catch (NoResultException e) {
+			e.printStackTrace();
+			System.out.println("No result");
+			return null;
+		}
+		return hit;
+	}
+	
+	
 
 }

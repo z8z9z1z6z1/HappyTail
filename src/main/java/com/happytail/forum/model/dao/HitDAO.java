@@ -10,5 +10,7 @@ public interface HitDAO {
 	
 	public Hit select(Integer id);
 
+	public Hit selectByTopicId(Integer topicId);
+
 
 }

@@ -17,7 +17,7 @@
 	<form action="<c:url value="changePassword" />" method="post">
 		<input class="inpu" type="hidden" name="id" value = "${sessionScope.LoginOK.id }" />		
 		
-		<label class="lab">Password :</label>
+		<label class="lab">新的密碼 :</label>
 		<input class="inpu" type="password" name="password"  value = "${param.password }" />
 		<br>
 		<font color='red' size="-1">${errorMsg.passwordError}${errorMsg.passwordformatError}</font>

@@ -16,8 +16,10 @@ public interface FollowDAO {
 	//update改變status或更新文章
 	public Follow update(Follow follow);
 	
-	public Follow select(Integer topicId, Integer userId);
+	public Follow selectByTopicIdAndUserId(Integer topicId, Integer userId);
 
-	public List<Integer> selectTopicIdList(Integer userId);
+	public List<Integer> selectTopicIdListByUserId(Integer userId);
+	
+	public List<Follow> selectTopicIdListByTopicId(Integer topicId);
 
 }

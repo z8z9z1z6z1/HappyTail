@@ -72,9 +72,11 @@ public class ProductDaoImpl implements ProductDao  {
 	public  List<ProductBean> selectCategory(Integer categoryId){
 		String newid = String.valueOf(categoryId);
 //		System.out.println(newid);
-		String hql ="from ProductBean  where categoryId=:categoryId";
+		Integer st = 1;
+		String hql ="from ProductBean  where categoryId=:categoryId and status=:st";
 		Query<ProductBean> selectCate = getSession().createQuery(hql,ProductBean.class);
 		selectCate.setParameter("categoryId", newid);
+		selectCate.setParameter("st", st);
 		List<ProductBean> resultList = selectCate.getResultList();
 		System.out.println("resultList="+resultList);
 		return resultList;

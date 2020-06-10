@@ -97,13 +97,18 @@ public class CodeMaoDAOImpl implements CodeMapDAO {
 //			paramList.add(String.valueOf(e));
 //		});
 		
-		Query<CodeMap> query = getSession().createQuery(selectMyFavorateValueList, CodeMap.class);
-		query.setParameter("categoryIdlist", paramList);
-		query.setParameter("module", module);
-		query.setParameter("type", type);
+		List<CodeMap> list = getSession().createQuery(selectMyFavorateValueList, CodeMap.class)
+				.setParameter("categoryIdlist", paramList)
+				.setParameter("module", module)
+				.setParameter("type", type)
+				.getResultList();
+//		Query<CodeMap> query = getSession().createQuery(selectMyFavorateValueList, CodeMap.class);
+//		query.setParameter("categoryIdlist", paramList);
+//		query.setParameter("module", module);
+//		query.setParameter("type", type);
 
 
-		return query.list();
+		return list;
 	}
 
 }

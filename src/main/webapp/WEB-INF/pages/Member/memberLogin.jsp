@@ -19,11 +19,11 @@
 	<br>
 		<form class="form" action="<c:url value="loginCheck" />" method="post">		
 		<br>	
-			<label class="lab">Account :</label>
+			<label class="lab">帳號 :</label>
 				<input class="inpu" type="text" name="account"  value = "${param.account }" id='account'/>
 				<font color='red' size="-1">${requestScope.ErrorMsg.accountError }</font>
 			<br><br>
-			<label class="lab">Password :</label> 	
+			<label class="lab">密碼 :</label> 	
 				<input class="inpu" type="password" name="password"  value = "${param.password }" id='password'/>
 				<font color='red' size="-1">${requestScope.ErrorMsg.passwordError }</font>			
 			<br><font color='red' size="-1">${requestScope.ErrorMsg.LoginError }</font>
@@ -32,8 +32,8 @@
 			<a href="<c:url value='register' />"><small>還不是會員?</small></a><br><br>				
 			
 
-		<button class="ot" type="submit" name="login">登入</button>
-		<input type="button" value='一鍵新增' onclick='Send()'>
+		<button class="btn btn-info" type="submit" name="login">登入</button>
+		<input class="btn btn-info" type="button" value='一鍵新增' onclick='Send()'>
 
 <!-- 		<button class="btn btn-info" type="submit" name="login">登入</button> -->
 
@@ -44,8 +44,8 @@
 
 <script>
 function Send() {
-	document.getElementById("account").value='a03163084@gmail.com';
-	document.getElementById("password").value='aaSS#$12345';
+	document.getElementById("account").value='petProject113@gmail.com';
+	document.getElementById("password").value='eeit11339';
 	
 }
 </script>

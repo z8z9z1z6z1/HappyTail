@@ -26,8 +26,13 @@ public class CheckoutController {
 	
 	@GetMapping("/OrderCheck")
 	public String OrderSureForm(
-			@SessionAttribute("LoginOK")PetMembers petMembers,
+//			@SessionAttribute("LoginOK")PetMembers petMembers,
 			HttpServletRequest request) {
+		HttpSession session2 = request.getSession();
+		PetMembers petMembers= (PetMembers) session2.getAttribute("LoginOK");
+		if(petMembers==null) {
+			return "memberLogin";
+		}
 		System.out.println("進去確認訂單");
 		HttpSession session = request.getSession(false);
 		CartBean cart=(CartBean)session.getAttribute("cart");
@@ -39,11 +44,7 @@ public class CheckoutController {
 		System.out.println("前往結帳");
 		
 		System.out.println("以下用來測試");
-//		PetMembers member =new PetMembers();
-//		PetMembers member = mem.selectPetMembers(1);
-		
-//		session.setAttribute("LoginOK", member);
-		
+	
 		
 		return"OrderCheck";	
 				}

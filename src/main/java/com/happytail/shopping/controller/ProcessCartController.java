@@ -78,7 +78,7 @@ public class ProcessCartController {
 
 		//新建訂單物件
 		OrderBean orderBean=
-				new OrderBean(petMembers.getId(), totalPrice, address, orderDate,message,"成立");
+				new OrderBean(petMembers.getId(), totalPrice, address, orderDate,message,"未付款");
 //				new OrderBean(會員	,總價格	, 地址,		 日期,		備註,"狀態");
 		
 		Set<OrderItemBean> itemSet = new HashSet<OrderItemBean>();

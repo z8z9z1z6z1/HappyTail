@@ -63,8 +63,13 @@ public class SpringMVCjavaConfig implements WebMvcConfigurer {
 //		return resolver;
 //	}
 	
+	
+	//測試用  暫時先關掉
+	@Bean
 	public MultipartResolver multipartResolver() {
 		StandardServletMultipartResolver resolver = new StandardServletMultipartResolver();
+		
+
 		return resolver;
 	}
 	

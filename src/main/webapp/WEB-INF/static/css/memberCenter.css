@@ -1,0 +1,50 @@
+.container-fluid {
+	min-height: 100vh;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	background-color: #e3f2fd;
+}
+
+.info-card {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.info-card .frame-body {
+	min-height: calc(100vh - (40px));
+}
+
+.side-bar {
+	border-right: 1px solid lightgrey;
+}
+
+.replyList {
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 30px;
+	width: 100%;
+}
+
+:root { 
+	--ck-z-default: 1080;
+}
+
+.topicContentArea img {
+	max-width: 100%;
+}
+
+.side-block {
+	width: 50px;
+	margin: 0
+}
+
+.center-block {
+	width: calc(100% - ( 100px));
+	margin: 0
+}
+
+#updatetopicEditor {
+	height: 300px;
+	border: 1px solid lightgrey;
+	width: 100%;
+}

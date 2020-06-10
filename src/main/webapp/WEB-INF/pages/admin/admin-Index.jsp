@@ -34,129 +34,6 @@
 				<li class="nav-item d-none d-sm-inline-block">
 					<a href="admin-Index" class="nav-link">Home</a>
 				</li>
-				<li class="nav-item d-none d-sm-inline-block">
-					<a href="#" class="nav-link">Contact</a>
-				</li>
-			</ul>
-
-			<!-- SEARCH FORM -->
-			<form class="form-inline ml-3">
-				<div class="input-group input-group-sm">
-					<input class="form-control form-control-navbar" type="search" placeholder="Search"
-						aria-label="Search">
-					<div class="input-group-append">
-						<button class="btn btn-navbar" type="submit">
-							<i class="fas fa-search"></i>
-						</button>
-					</div>
-				</div>
-			</form>
-
-			<!-- Right navbar links -->
-			<ul class="navbar-nav ml-auto">
-				<!-- Messages Dropdown Menu -->
-				<li class="nav-item dropdown">
-					<a class="nav-link" data-toggle="dropdown" href="#">
-						<i class="far fa-comments"></i>
-						<span class="badge badge-danger navbar-badge">3</span>
-					</a>
-					<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-						<a href="#" class="dropdown-item">
-							<!-- Message Start -->
-							<div class="media">
-								<img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-								<div class="media-body">
-									<h3 class="dropdown-item-title">
-										Brad Diesel
-										<span class="float-right text-sm text-danger">
-											<i class="fas fa-star"></i>
-										</span>
-									</h3>
-									<p class="text-sm">Call me whenever you can...</p>
-									<p class="text-sm text-muted">
-										<i class="far fa-clock mr-1"></i>
-										4 Hours Ago
-									</p>
-								</div>
-							</div>
-							<!-- Message End -->
-						</a>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item">
-							<!-- Message Start -->
-							<div class="media">
-								<img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-								<div class="media-body">
-									<h3 class="dropdown-item-title">
-										John Pierce
-										<span class="float-right text-sm text-muted">
-											<i class="fas fa-star"></i>
-										</span>
-									</h3>
-									<p class="text-sm">I got your message bro</p>
-									<p class="text-sm text-muted">
-										<i class="far fa-clock mr-1"></i>
-										4 Hours Ago
-									</p>
-								</div>
-							</div>
-							<!-- Message End -->
-						</a>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item">
-							<!-- Message Start -->
-							<div class="media">
-								<img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-								<div class="media-body">
-									<h3 class="dropdown-item-title">
-										Nora Silvester
-										<span class="float-right text-sm text-warning">
-											<i class="fas fa-star"></i>
-										</span>
-									</h3>
-									<p class="text-sm">The subject goes here</p>
-									<p class="text-sm text-muted">
-										<i class="far fa-clock mr-1"></i>
-										4 Hours Ago
-									</p>
-								</div>
-							</div>
-							<!-- Message End -->
-						</a>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-					</div>
-				</li>
-				<!-- Notifications Dropdown Menu -->
-				<li class="nav-item dropdown">
-					<a class="nav-link" data-toggle="dropdown" href="#">
-						<i class="far fa-bell"></i>
-						<span class="badge badge-warning navbar-badge">15</span>
-					</a>
-					<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-						<span class="dropdown-item dropdown-header">15 Notifications</span>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item">
-							<i class="fas fa-envelope mr-2"></i>
-							4 new messages
-							<span class="float-right text-muted text-sm">3 mins</span>
-						</a>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item">
-							<i class="fas fa-users mr-2"></i>
-							8 friend requests
-							<span class="float-right text-muted text-sm">12 hours</span>
-						</a>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item">
-							<i class="fas fa-file mr-2"></i>
-							3 new reports
-							<span class="float-right text-muted text-sm">2 days</span>
-						</a>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-					</div>
-				</li>
 			</ul>
 		</nav>
 		<!-- /.navbar -->
@@ -164,7 +41,7 @@
 		<!-- Main Sidebar Container -->
 		<aside class="main-sidebar sidebar-dark-primary elevation-4">
 			<!-- Brand Logo -->
-			<a href="adminIndex" class="brand-link">
+			<a href="admin-Index" class="brand-link">
 				<img src="admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
 					class="brand-image img-circle elevation-3" style="opacity: .8">
 				<span class="brand-text font-weight-light">後臺管理</span>
@@ -225,14 +102,14 @@
 						</li>
 
 						<li class="nav-item">
-							<a href="admin-AllProjects-json" class="nav-link">
+							<a href="<c:url value='/pageBackView?pageNum=1' />" class="nav-link">
 								<i class="nav-icon fas fa-table"></i>
 								<p>預約管理</p>
 							</a>
 						</li>
 
 						<li class="nav-item">
-							<a href="admin-allMembersJSON" class="nav-link">
+							<a href="admin-forum" class="nav-link">
 								<i class="nav-icon fas fa-table"></i>
 								<p>討論區管理</p>
 							</a>
@@ -302,9 +179,9 @@
 									<p>未處理訂單</p>
 								</div>
 								<div class="icon">
-									<i class="ion ion-stats-bars"></i>
+									<i class="fas fa-cart-arrow-down"></i>
 								</div>
-								<a href="admin-AllOrders" class="small-box-footer">
+								<a href="admin-uncheckOrders" class="small-box-footer">
 									More info
 									<i class="fas fa-arrow-circle-right"></i>
 								</a>
@@ -318,7 +195,7 @@
 									<p>總銷售金額</p>
 								</div>
 								<div class="icon">
-									<i class="ion ion-pie-graph"></i>
+									<i class="fas fa-dollar-sign"></i>
 								</div>
 								<a href="admin-AllOrders" class="small-box-footer">
 									More info
@@ -350,6 +227,54 @@
 						</div>
 					</div>
 					<!-- /.card-body -->
+				</div>
+				<!-- /.card -->
+
+				<div class="card card-dark">
+					<div class="card-header">
+						<h3 class="card-title">熱銷商品前三名</h3>
+						<div class="card-tools">
+							<a href="#" class="btn btn-tool btn-sm">
+								<i class="fas fa-download"></i>
+							</a>
+							<a href="#" class="btn btn-tool btn-sm">
+								<i class="fas fa-bars"></i>
+							</a>
+						</div>
+					</div>
+					<div class="card-body table-responsive p-0">
+						<table class="table table-striped table-valign-middle">
+							<thead>
+								<tr>
+									<th>商品編號</th>
+									<th>商品名稱</th>
+									<th>商品價格</th>
+									<th>銷售量</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>${top3[0][0]}</td>
+									<td>${top3[0][1]}&emsp;<span class="badge bg-danger">HOT</span></td>
+									<td>${top3[0][2]}</td>
+									<td>${top3[0][3]}</td>
+								</tr>
+								<tr>
+									<td>${top3[1][0]}</td>
+									<td>${top3[1][1]}</td>
+									<td>${top3[1][2]}</td>
+									<td>${top3[1][3]}</td>
+								</tr>
+								<tr>
+									<td>${top3[2][0]}</td>
+									<td>${top3[2][1]}</td>
+									<td>${top3[2][2]}</td>
+									<td>${top3[2][3]}</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
 				</div>
 				<!-- /.card -->
 
@@ -403,14 +328,8 @@
 
 						</div>
 						<!-- /.card -->
-
-
 					</div>
-
 				</div>
-
-
-
 			</section>
 
 		</div>
@@ -531,7 +450,7 @@
 			});
 	})
 	</script>
-	
+
 	//每月銷售金額
 	<script>
 	var lineChartCanvas = $('#lineChart').get(0).getContext('2d')

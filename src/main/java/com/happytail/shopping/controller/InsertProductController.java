@@ -41,7 +41,7 @@ public class InsertProductController {
 			ProductBean productBean=new ProductBean();
 			
 			model.addAttribute("productBean",productBean);
-			return"shopping/insertProduct";
+			return"toInsertProduct";
 		}
 		
 		

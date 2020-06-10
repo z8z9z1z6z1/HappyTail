@@ -42,7 +42,7 @@
 		<li>
 			<div class="dropdown notice-dropdown">
 			  <i class='fas fa-bell fa-2x dropdown-toggle' data-toggle="dropdown" ></i>
-			  <span class="counter"></span>	
+			  <span class="d-none counter"></span>	
 			  <div id="notice-list" class="dropdown-menu dropdown-menu-right">
 <!-- 			  	<button type="button" class="dropdown-item" onclick="noticeLink(id,link)"> -->
 <!-- 				    replyusername 回覆了你的文章 title -->
@@ -67,27 +67,27 @@
 	<div class="collapse navbar-collapse" id="navbarNavDropdown">
 		<ul class="navbar-nav">
 			<li class="nav-item active"><a class="nav-link"
-				href="<c:url value='/HappyTailIndex.jsp'/> ">Home <span
+				href="<c:url value='/HappyTailIndex.jsp'/> ">首頁 <span
 					class="sr-only">(current)</span>
 			</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">About us</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">關於我們</a></li>
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="#"
 				id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false"> Our Services </a>
+				aria-haspopup="true" aria-expanded="false"> 我們的服務 </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="<c:url value='/shopIndex'/>">Online Shop</a> 
-					<a class='dropdown-item' href="<c:url value='/Evaluationlist' />">Reservation Service</a> 
-					<a class="dropdown-item" href="<c:url value='/forum/topiclist?isForumArea=isForumArea' />">Pet Forum</a>
+					<a class="dropdown-item" href="<c:url value='/shopIndex'/>">網路商城</a> 
+					<a class='dropdown-item' href="<c:url value='/Evaluationlist?id=${petMembers.id}' />">美容服務預約</a> 
+					<a class="dropdown-item" href="<c:url value='/forum/topiclist?isForumArea=isForumArea' />">寵物論壇</a>
 				</div></li>
-			<li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">聯絡我們</a></li>
 		</ul>
 	</div>
-	<form class="form-inline">
-		<input class="form-control mr-sm-2" type="search" placeholder="Search"
-			aria-label="Search">
-		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-	</form>
+<!-- 	<form class="form-inline"> -->
+<!-- 		<input class="form-control mr-sm-2" type="search" placeholder="Search" -->
+<!-- 			aria-label="Search"> -->
+<!-- 		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+<!-- 	</form> -->
 </nav>
 
 <div id="mySidenav" class="sidenav">
@@ -99,18 +99,18 @@
 
 	<span style="color: white; font-family: fantasy; font-size: 18px;"><img
 		src="<c:url value='/img/logo_white3.png'/>">Happy Tail</span> <a
-		href="#home">Home</a> <a href="#notice">Notice</a>
+		href="#home">首頁</a> <a href="#notice">通知</a>
 	<c:if test="${!empty LoginOK}">
-		<a href="<c:url value='memberCenter'/>">Personal Profile</a>
+		<a href="<c:url value='/memberCenter'/>">個人頁面</a>
 	</c:if>
 	<c:if test="${empty LoginOK}">
-		<a href="<c:url value='login'/>">Personal Profile</a>
+		<a href="<c:url value='/login'/>">個人頁面</a>
 	</c:if>
-	<a href="<c:url value='/shopIndex'/> ">Online Shop</a> <a
-		href="#Reservation Service">Reservation Service</a> <a
-		href="<c:url value='/forum/topiclist?isForumArea=isForumArea' />">Pet Forum</a> 
-		<a class="subheader">Learn About
-		Us</a>
+
+	<a href="<c:url value='/shopIndex'/> ">網路商城</a> <a
+		href="<c:url value='/Evaluationlist?id=${petMembers.id}' />">美容服務預約</a> <a
+		href="<c:url value='/forum/topiclist?isForumArea=isForumArea' />">寵物論壇</a> 
+		<a class="subheader">認識我們</a>
 
 </div>
 

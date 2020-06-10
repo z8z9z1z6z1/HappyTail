@@ -60,11 +60,9 @@ public class GoController {
 		return"shoppingCart";
 	}
 	
-	@PostMapping(value = "/showProduct.do")
-	public String showProductByCategory(Model m,HttpServletRequest request,@RequestParam("categoryId") Integer categoryId ) {
-
-		System.out.println("傳入資料狀況:"+categoryId);	
-		List<ProductBean> list = dao.selectCategory(categoryId);
+	@GetMapping(value = "/showProduct1")
+	public String showProduct1(Model m,HttpServletRequest request ) {
+		List<ProductBean> list = dao.selectCategory(1);
 		m.addAttribute("productList", list);
 		System.out.println("抓取資料成功");
 
@@ -73,7 +71,16 @@ public class GoController {
 	
 	@GetMapping(value = "/showProduct2")
 	public String showProduct2(Model m,HttpServletRequest request ) {
-		List<ProductBean> list = dao.selectCategory(1);
+		List<ProductBean> list = dao.selectCategory(2);
+		m.addAttribute("productList", list);
+		System.out.println("抓取資料成功");
+
+		return "showProduct";
+	}
+	
+	@GetMapping(value = "/showProduct3")
+	public String showProduct3(Model m,HttpServletRequest request ) {
+		List<ProductBean> list = dao.selectCategory(3);
 		m.addAttribute("productList", list);
 		System.out.println("抓取資料成功");
 

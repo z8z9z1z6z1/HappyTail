@@ -120,10 +120,10 @@
 					<div class="fh5co-contact-info">
 							<h3 id="PetProduct">Pet Product</h3>
 							<ul>
-								<li class="icon-shopping-bag"><a href="#" id='cate1'>過往訂單</a>
-								<li class="icon-cake"><a href="<c:url value='/showProduct2'/>" id='cate1'>寵物食品</a></li>
-								<li class="icon-image"><a href="#" id='cate2'>寵物衣服</a></li>
-								<li class="icon-game-controller"><a href="#" id='cate3'>寵物玩具</a></li>
+								<li class="icon-shopping-bag"><a href="<c:url value='/getOrderBean.do'/>" id='cate1'>過往訂單</a>
+								<li class="icon-cake"><a href="<c:url value='/showProduct1'/>" id='cate1'>寵物食品</a></li>
+								<li class="icon-image"><a href="<c:url value='showProduct2.do'/>" id='cate2'>寵物衣服</a></li>
+								<li class="icon-game-controller"><a href="<c:url value='showProduct3.do'/>" id='cate3'>寵物玩具</a></li>
 								<li class="icon-shopping-cart"><a href="<c:url value='/intoCart'/> ">購物車</a></li>
 								<li class="icon-heart2"><a href="<c:url value='/getFavorite.do'/> ">我的最愛</a></li>
 								<li class="icon-home"><a href="<c:url value='/intoCart'/> ">回首頁</a></li>

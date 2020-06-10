@@ -17,6 +17,7 @@ public class backView {
 	@Id
 	private Integer reservationId;
 	private Date createDate;
+	private String createMonth;
 	private Integer availableDateTime;
 	private String require;
 	private String statuss;
@@ -77,6 +78,13 @@ public class backView {
 		this.amount = amount;
 	}
 	
+	
+	public String getCreateMonth() {
+		return createMonth;
+	}
+	public void setCreateMonth(String createMonth) {
+		this.createMonth = createMonth;
+	}
 	public Integer getId() {
 		return Id;
 	}

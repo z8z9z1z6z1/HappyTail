@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.happytail.admin.model.AdminMembersDao;
 import com.happytail.admin.model.service.AdminMembersService;
@@ -68,12 +69,16 @@ public class AdminMemberController {
 		model.addAttribute("sumPrice",sumPrice);
 		
 		//未處理訂單數
-		Long unchickOrders = adShopService.unChickOrders();
+		Long unchickOrders = adShopService.unCheckOrders();
 		model.addAttribute("unchickOrders", unchickOrders);
 		
 		//每月銷售額
 		List<Long> sumOrderByMonth = adShopService.sumOrdersByMonth();
 		model.addAttribute("list2",sumOrderByMonth);
+		
+		//Top3
+		List<Object> top3 = adShopService.top3SalesProduct();
+		model.addAttribute("top3" ,top3);
 
 		return "adminIndex";
 	}
@@ -101,7 +106,7 @@ public class AdminMemberController {
 	}
 	
 	//更改狀態
-	@GetMapping(value = "admin-changeStatus/{key}", produces= {"application/json"})
+	@PostMapping(value = "admin-changeStatus/{key}", produces= {"application/json"})
 	public ResponseEntity<PetMembers> changeMemberstatus(@PathVariable Integer key, PetMembers member) {
 		PetMembers members = adMemberService.changeMemberStatus(key);
 		ResponseEntity<PetMembers> re = new ResponseEntity<>(members, HttpStatus.OK);

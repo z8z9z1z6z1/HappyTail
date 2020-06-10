@@ -51,14 +51,14 @@ c3.592,0,6.502-4.028,6.502-8.999C36.605,56.574,33.695,52.548,30.104,52.548z" />
 		<div class="row">
 			<div class="col l6 s12">
 				<h5 style="color: white; font-family: Arial, Helvetica, sans-serif; padding-top: 10px;">快樂尾巴</h5>
-				<h5 style="color: white; font-family: Arial, Helvetica, sans-serif;">Links</h5>
+				<h5 style="color: white; font-family: Arial, Helvetica, sans-serif;">連結</h5>
 				<ul style="list-style-type: none;">
 					<li><a
 						style="color: white; font-family: Arial, Helvetica, sans-serif;"
-						href="#!">About Us</a></li>
+						href="https://www.iii.org.tw/About/CoreValue.aspx?fm_sqno=8">關於我們</a></li>
 					<li><a
 						style="color: white; font-family: Arial, Helvetica, sans-serif;"
-						href="#!">Contact Us</a></li>
+						href="https://www.iii.org.tw/SiteInfo/ContactUs.aspx?fm_sqno=48&ff_sqno=8">聯絡我們</a></li>
 				</ul>
 			</div>
 
@@ -77,7 +77,7 @@ c3.592,0,6.502-4.028,6.502-8.999C36.605,56.574,33.695,52.548,30.104,52.548z" />
                            <use xlink:href="#svg--google" />
                            <span class="clip">GOOGLE +</span>
                        </svg>
-					</a> <a href="" rel="author" class="share facebook"
+							</a> <a href="" rel="author" class="share facebook"
 						style="height: 50px; width: 50px;"> <svg role="presentation"
 							class="svg--icon">
                            <use xlink:href="#svg--facebook" />

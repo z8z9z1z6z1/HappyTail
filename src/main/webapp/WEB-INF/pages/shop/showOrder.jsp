@@ -101,7 +101,7 @@
 										<span class="hidden-xs">全部訂單</span>
 								</a></li>
 								<li><a href="#" data-tab="2"><span class="hidden-xs">未付款訂單</span></a></li>
-								<li><a href="#" data-tab="3"><span class="hidden-xs">已失效訂單</span></a></li>
+								<li><a href="#" data-tab="3"><span class="hidden-xs">已付款訂單</span></a></li>
 							</ul>
 
 
@@ -184,9 +184,11 @@
 														<td>													
 															<input type="button" class='btn btn-primary '
 															value='付款'
+															 
 															onclick="document.getElementById('g${ol2.getOrderId()}').submit();">
 															<form
 																action="<c:url value='/getGreen.do${ol2.getOrderId()}'/>"
+																target="_blank"
 																method="POST" id='g${ol2.getOrderId()}'>
 																<Input type='hidden' value='${ol2.getOrderId()}'>
 															</form>

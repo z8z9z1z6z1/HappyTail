@@ -56,4 +56,6 @@ public interface OrderDao {
 
 	List<OrderBean> selectOrderByMemberIdOld(Integer Id);
 
+	String payMoney(int orderId);
+
 }

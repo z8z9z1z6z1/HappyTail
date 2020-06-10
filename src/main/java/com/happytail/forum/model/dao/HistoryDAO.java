@@ -12,6 +12,11 @@ public interface HistoryDAO {
 
 	public History select(Integer id);
 	
+	public History update(History history);
+	
 	public List<Integer> selectTopicIdList(Integer userId);
+	
+	public History selectByTopicIdAndUserId(Integer topicId, Integer userId);
+
 
 }

@@ -40,154 +40,24 @@
 					</a>
 				</li>
 				<li class="nav-item d-none d-sm-inline-block">
-					<a href="adminIndex" class="nav-link">Home</a>
+					<a href="admin-Index" class="nav-link">Home</a>
 				</li>
-				<li class="nav-item d-none d-sm-inline-block">
-					<a href="#" class="nav-link">Contact</a>
-				</li>
-			</ul>
-
-			<!-- SEARCH FORM -->
-			<form class="form-inline ml-3">
-				<div class="input-group input-group-sm">
-					<input class="form-control form-control-navbar" type="search" placeholder="Search"
-						aria-label="Search">
-					<div class="input-group-append">
-						<button class="btn btn-navbar" type="submit">
-							<i class="fas fa-search"></i>
-						</button>
-					</div>
-				</div>
-			</form>
-
-			<!-- Right navbar links -->
-			<ul class="navbar-nav ml-auto">
-				<!-- Messages Dropdown Menu -->
-				<li class="nav-item dropdown">
-					<a class="nav-link" data-toggle="dropdown" href="#">
-						<i class="far fa-comments"></i>
-						<span class="badge badge-danger navbar-badge">3</span>
-					</a>
-					<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-						<a href="#" class="dropdown-item">
-							<!-- Message Start -->
-							<div class="media">
-								<img src="${pageContext.request.contextPath}/dist/img/user1-128x128.jpg" alt="User Avatar"
-									class="img-size-50 mr-3 img-circle">
-								<div class="media-body">
-									<h3 class="dropdown-item-title">
-										Brad Diesel
-										<span class="float-right text-sm text-danger">
-											<i class="fas fa-star"></i>
-										</span>
-									</h3>
-									<p class="text-sm">Call me whenever you can...</p>
-									<p class="text-sm text-muted">
-										<i class="far fa-clock mr-1"></i>
-										4 Hours Ago
-									</p>
-								</div>
-							</div>
-							<!-- Message End -->
-						</a>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item">
-							<!-- Message Start -->
-							<div class="media">
-								<img src="${pageContext.request.contextPath}/dist/img/user8-128x128.jpg" alt="User Avatar"
-									class="img-size-50 img-circle mr-3">
-								<div class="media-body">
-									<h3 class="dropdown-item-title">
-										John Pierce
-										<span class="float-right text-sm text-muted">
-											<i class="fas fa-star"></i>
-										</span>
-									</h3>
-									<p class="text-sm">I got your message bro</p>
-									<p class="text-sm text-muted">
-										<i class="far fa-clock mr-1"></i>
-										4 Hours Ago
-									</p>
-								</div>
-							</div>
-							<!-- Message End -->
-						</a>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item">
-							<!-- Message Start -->
-							<div class="media">
-								<img src="${pageContext.request.contextPath}/dist/img/user3-128x128.jpg" alt="User Avatar"
-									class="img-size-50 img-circle mr-3">
-								<div class="media-body">
-									<h3 class="dropdown-item-title">
-										Nora Silvester
-										<span class="float-right text-sm text-warning">
-											<i class="fas fa-star"></i>
-										</span>
-									</h3>
-									<p class="text-sm">The subject goes here</p>
-									<p class="text-sm text-muted">
-										<i class="far fa-clock mr-1"></i>
-										4 Hours Ago
-									</p>
-								</div>
-							</div>
-							<!-- Message End -->
-						</a>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-					</div>
-				</li>
-				<!-- Notifications Dropdown Menu -->
-				<li class="nav-item dropdown">
-					<a class="nav-link" data-toggle="dropdown" href="#">
-						<i class="far fa-bell"></i>
-						<span class="badge badge-warning navbar-badge">15</span>
-					</a>
-					<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-						<span class="dropdown-item dropdown-header">15 Notifications</span>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item">
-							<i class="fas fa-envelope mr-2"></i>
-							4 new messages
-							<span class="float-right text-muted text-sm">3 mins</span>
-						</a>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item">
-							<i class="fas fa-users mr-2"></i>
-							8 friend requests
-							<span class="float-right text-muted text-sm">12 hours</span>
-						</a>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item">
-							<i class="fas fa-file mr-2"></i>
-							3 new reports
-							<span class="float-right text-muted text-sm">2 days</span>
-						</a>
-						<div class="dropdown-divider"></div>
-						<a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-					</div>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-						<i class="fas fa-th-large"></i>
-					</a>
-				</li>
-			</ul>
+			</ul>		
 		</nav>
 		<!-- /.navbar -->
 
 		<!-- Main Sidebar Container -->
-		<aside class="main-sidebar sidebar-dark-primary elevation-4">
+				<aside class="main-sidebar sidebar-dark-primary elevation-4">
 			<!-- Brand Logo -->
-			<a href="adminIndex" class="brand-link">
-				<img src="${pageContext.request.contextPath}/admin/dist/img/AdminLTELogo.png"
-					alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-				<span class="brand-text font-weight-light">AdminLTE 3</span>
+			<a href="admin-Index" class="brand-link">
+				<img src="admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+					class="brand-image img-circle elevation-3" style="opacity: .8">
+				<span class="brand-text font-weight-light">後臺管理</span>
 			</a>
 
 			<!-- Sidebar -->
 			<div class="sidebar">
+
 				<!-- Sidebar Menu -->
 				<nav class="mt-2">
 					<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
@@ -197,7 +67,7 @@
 						<li class="nav-item">
 							<a href="admin-Index" class="nav-link">
 								<i class="nav-icon fas fa-tachometer-alt"></i>
-								<p>首頁</p>
+								<p>後台首頁</p>
 							</a>
 						</li>
 
@@ -240,14 +110,14 @@
 						</li>
 
 						<li class="nav-item">
-							<a href="admin-AllProjects-json" class="nav-link">
+							<a href="<c:url value='/pageBackView?pageNum=1' />" class="nav-link">
 								<i class="nav-icon fas fa-table"></i>
 								<p>預約管理</p>
 							</a>
 						</li>
 
 						<li class="nav-item">
-							<a href="admin-allMembersJSON" class="nav-link">
+							<a href="admin-forum" class="nav-link">
 								<i class="nav-icon fas fa-table"></i>
 								<p>討論區管理</p>
 							</a>
@@ -273,7 +143,6 @@
 					<div class="row mb-2">
 						<div class="col-sm-6">
 							<h1>會員資料</h1>
-
 						</div>
 					</div>
 				</div>
@@ -292,25 +161,25 @@
 									<table id="allMembers" class="table table-bordered table-striped">
 										<thead>
 											<tr>
-												<th>Name</th>
-												<th>Gender</th>
-												<th>Birthday</th>
+												<th>姓名</th>
+												<th>性別</th>
+												<th>生日</th>
 												<th>E-mail</th>
-												<th>Address</th>
-												<th>Status</th>
-												<th>Update</th>
+												<th>地址</th>
+												<th>狀態</th>
+												<th>編輯</th>
 											</tr>
 										</thead>
 
 										<tfoot>
 											<tr>
-												<th>Name</th>
-												<th>Gender</th>
-												<th>Birthday</th>
+												<th>姓名</th>
+												<th>性別</th>
+												<th>生日</th>
 												<th>E-mail</th>
-												<th>Address</th>
-												<th>Status</th>
-												<th>Update</th>
+												<th>地址</th>
+												<th>狀態</th>
+												<th>編輯</th>
 											</tr>
 										</tfoot>
 									</table>
@@ -348,70 +217,6 @@
 		<!-- /.control-sidebar -->
 	</div>
 	<!-- ./wrapper -->
-
-	<!-- 會員更新表單 -->
-	<div class="modal fade" id="member-update">
-		<div class="modal-dialog  modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">修改資料</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<!-- Form表單 -->
-					<form method='POST'>
-
-						<div class="card-body">
-							<div class="row">
-								<div class="col-sm-6">
-									<!-- text input -->
-									<div class="form-group">
-										<label>姓名</label>
-										<input type="text" class="form-control" id="upadte-name" />
-									</div>
-								</div>
-								<div class="col-sm-6">
-									<div class="form-group">
-										<label>年齡</label>
-										<input type="text" class="form-control" id="upadte-age" />
-									</div>
-								</div>
-								<div class="col-sm-6">
-									<div class="form-group">
-										<label>生日</label>
-										<input type="date" class="form-control" id="upadte-bday" />
-									</div>
-								</div>
-
-							</div>
-							<div class="form-group">
-								<label for="exampleInputemail">E-mail</label>
-								<input type="text" class="form-control" id="update-email" />
-							</div>
-							<div class="form-group">
-								<label for="exampleInputaddress">地址</label>
-								<input type="text" class="form-control" id="update-address" />
-							</div>
-
-							<div class="modal-footer justify-content-between">
-								<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-								<button type="submit" class="btn btn-primary">修改</button>
-							</div>
-						</div>
-
-					</form>
-
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
-	</div>
-	<!-- /.modal -->
-
-
 
 	<!-- jQuery -->
 	<script src="${pageContext.request.contextPath}/admin/plugins/jquery/jquery.min.js"></script>
@@ -488,7 +293,7 @@
 													render : function(data,
 															type, row, meta) {
 														
-														return "<a class='btn btn-info btn-sm' data-test='" + data + "'><i class='fas fa-pencil-alt'></i>更改</a>";
+														return "<a class='btn btn-default btn-sm' data-test='" + data + "'><i class='fas fa-pencil-alt'></i>停權</a>";
 													  }
 												    }
 													]
@@ -500,24 +305,17 @@
 // 								alert("<c:url value='admin-changeStatus/" + id + "' />");
 								$.ajax({
 									async:false,
-									type: "GET",
+									type: "POST",
 									url: "<c:url value='admin-changeStatus/" + id + "' />",
 									data: {},
 									dataType: 'json',
 									success: function() {
 										alert("修改成功");
 										$('#allMembers').DataTable().ajax.reload();
-										}
-									
-																	
-									})	
-								
-										              
-				            });
-							
-							
+										}													
+									})							              
+				            });			
 						});
-		
 	</script>
 </body>
 

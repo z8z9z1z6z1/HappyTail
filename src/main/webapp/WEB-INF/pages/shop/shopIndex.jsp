@@ -132,7 +132,7 @@
 									<p>
 										<a href="<c:url value='/intoCart'/> " class="icon"><i
 											class="icon-shopping-cart"></i></a> <a
-											href="<c:url value='showProduct.do'/>" class="icon"><i
+											href="<c:url value='showProduct1.do'/>" class="icon"><i
 											class="icon-eye"></i></a>
 									</p>
 								</div>
@@ -152,15 +152,16 @@
 								<div class="inner">
 									<p>
 										<a href="<c:url value='/intoCart'/> " class="icon" onclick=><i
-											class="icon-shopping-cart"></i></a> <a href="#" class="icon"
-											onclick="document.getElementById('myform').submit();"><i
+											class="icon-shopping-cart"></i></a> 
+											<a href="<c:url value='showProduct2.do'/>" class="icon"
+											><i
 											class="icon-eye"></i></a>
 									</p>
 <!-- 									<form action="/showProduct" method="POST" -->
-									<form action="<c:url value='/showProduct.do'/>" method="POST"
-										id='myform'>
-										<Input type='hidden' name='categoryId' value='1'>
-									</form>
+<%-- 									<form action="<c:url value='/showProduct.do'/>" method="POST" --%>
+<!-- 										id='myform'> -->
+<!-- 										<Input type='hidden' name='categoryId' value='1'> -->
+<!-- 									</form> -->
 								</div>
 							</div>
 							<div class="desc">
@@ -179,7 +180,7 @@
 									<p>
 										<a href="<c:url value='/intoCart'/> " class="icon"><i
 											class="icon-shopping-cart"></i></a> <a
-											href="<c:url value='/showProduct'/>" class="icon"><i
+											href="<c:url value='/showProduct3'/>" class="icon"><i
 											class="icon-eye"></i></a>
 									</p>
 								</div>

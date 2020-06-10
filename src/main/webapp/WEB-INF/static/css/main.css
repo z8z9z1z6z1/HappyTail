@@ -228,3 +228,13 @@ footer {
 .notice-dropdown .dropdown-toggle::after {
 	display: none;
 }
+
+.pointer {
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+.pointer:hover {
+	color: red;
+	transition: 0.5s;
+} 

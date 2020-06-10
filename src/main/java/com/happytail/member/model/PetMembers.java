@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Component
 @Entity
@@ -152,6 +153,7 @@ public class PetMembers {
 	}
 
 	@Column(name = "memberImage")
+	@JsonIgnore
 	public Blob getMemberImage() {
 		return memberImage;
 	}

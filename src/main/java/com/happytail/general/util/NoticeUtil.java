@@ -6,7 +6,7 @@ public class NoticeUtil {
 	
 	public static void main(String[] args) {
 		NoticeUtil.getNoticeTemplate(NoticeType.ReceiveReply);
-		
+		NoticeUtil.getNoticeTemplate(NoticeType.ReceiveReservation);
 		System.out.println(NoticeUtil.getNoticeTemplate(NoticeType.ReceiveReply));
 		System.out.println(NoticeUtil.getNoticeTemplate(NoticeType.AtReply));
 		System.out.println(NoticeUtil.getNoticeTemplate(NoticeType.LikeTopic));
@@ -14,7 +14,7 @@ public class NoticeUtil {
 		System.out.println(NoticeUtil.getNoticeTemplate(NoticeType.UpdateTopic));
 		
 		String template = NoticeUtil.getNoticeTemplate(NoticeType.ReceiveReply);
-		
+		String template2 = NoticeUtil.getNoticeTemplate(NoticeType.ReceiveReservation);
 		System.out.println(String.format(template, "AAA","123456789"));
 	}
 

@@ -1,5 +1,6 @@
 package com.happytail.forum.model.service;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,12 +12,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.happytail.forum.model.Favorate;
 import com.happytail.forum.model.Follow;
 import com.happytail.forum.model.History;
+import com.happytail.forum.model.Hit;
 import com.happytail.forum.model.Reply;
 import com.happytail.forum.model.ReplylistView;
 import com.happytail.forum.model.Report;
 import com.happytail.forum.model.ThumbsUp;
 import com.happytail.forum.model.ThumbsUpView;
 import com.happytail.forum.model.Topic;
+import com.happytail.forum.model.TopicImage;
 import com.happytail.forum.model.TopiclistView;
 import com.happytail.forum.model.dao.FavorateDAO;
 import com.happytail.forum.model.dao.FollowDAO;
@@ -34,6 +37,7 @@ import com.happytail.general.model.CodeMap;
 import com.happytail.general.model.Notice;
 import com.happytail.general.model.dao.CodeMapDAO;
 import com.happytail.general.model.dao.NoticeDAO;
+import com.happytail.general.model.service.NoticeService;
 import com.happytail.general.util.Const;
 import com.happytail.general.util.Const.ThumbsUpType;
 import com.happytail.general.util.Page;
@@ -89,6 +93,9 @@ public class ForumService {
 
 	@Autowired
 	private HistoryDAO historyDAO;
+	
+	@Autowired 
+	private NoticeService noticeService;
 
 	// Forum Top
 
@@ -99,16 +106,27 @@ public class ForumService {
 
 		return codeMapDAO.selectValueList(module, type);
 	}
+	
+	
+	//check favorate category
+	public List<CodeMap> getMyFavorateCategory(Integer userId) {
+		 List<Integer> list = favorateDAO.selectCategoryIdList(userId);
+		 return codeMapDAO.getMyFavorateCategorylist(list, Const.ModuleType.Forum, Const.CategoryType.topicCategory);
+	}
+	
+	
 
 	// insert favorate category
-	public void addFavorate(List<Favorate> list) {
-
+	public void addFavorate(PetMembers petMembers, List<Favorate> list) {
+		
+		List<Favorate> result = favorateDAO.selectFavorateCategoryList(petMembers.getId());
+		if(result.isEmpty() ) {
+		
 		for (Favorate favorate : list) {
 			favorateDAO.insert(favorate);
 			System.out.println("insert favorate success");
-
+			}
 		}
-
 		System.out.println("insert favorate fail");
 	}
 
@@ -155,24 +173,7 @@ public class ForumService {
 		}
 
 	}
-
-	/**
-	 * To set isThumbsUp, isFollowed and is Reported status
-	 */
-	private void setExtraColumn(List<TopiclistView> topiclistViewList, Integer userId) {
-		for (TopiclistView topicView : topiclistViewList) {
-
-			ThumbsUp thumbsUp = thumbsUpDAO.selectByTopic(topicView.getTopicId(), userId);
-			topicView.setIsThumbsUp(thumbsUp != null);
-
-			Follow follow = followDAO.select(topicView.getTopicId(), userId);
-			topicView.setIsFollowed(follow != null);
-
-			Report report = reportDAO.select(topicView.getTopicId(), userId);
-			topicView.setIsReported(report != null);
-		}
-	}
-
+	
 	// get hit topiclist
 	public Page<TopiclistView> getHitTopicList(PetMembers petMembers,Integer categoryId, PageInfo pageInfo) {
 
@@ -202,6 +203,25 @@ public class ForumService {
 
 	}
 
+	/**
+	 * To set isThumbsUp, isFollowed and is Reported status
+	 */
+	private void setExtraColumn(List<TopiclistView> topiclistViewList, Integer userId) {
+		for (TopiclistView topicView : topiclistViewList) {
+
+			ThumbsUp thumbsUp = thumbsUpDAO.selectByTopic(topicView.getTopicId(), userId);
+			topicView.setIsThumbsUp(thumbsUp != null);
+
+			Follow follow = followDAO.selectByTopicIdAndUserId(topicView.getTopicId(), userId);
+			topicView.setIsFollowed(follow != null);
+
+			Report report = reportDAO.select(topicView.getTopicId(), userId);
+			topicView.setIsReported(report != null);
+		}
+	}
+
+
+
 	// get topic content
 	public Topic getTopicContent(PetMembers petMembers, Integer topicId) {
 
@@ -215,7 +235,26 @@ public class ForumService {
 			System.out.println("codeMap = " + codeMap);
 
 			topic.setCategory(codeMap.getValue());
+			
+			Hit hit = hitDAO.selectByTopicId(topic.getId());
+			
+			if(hit == null) {
+				hit = new Hit();
+				hit.setTopicId(topicId);
+				hit.setCount(1);
+				System.out.println("hit = " + hit);
+
+				hitDAO.insert(hit);
+			}else {
+				hit.setCount(hit.getCount()+1);
+
+				hitDAO.update(hit);	
+				System.out.println("hit = " + hit);
+
+			}
+
 			return topic;
+			
 		} else {
 			Topic topic = topicDAO.select(topicId);
 
@@ -231,13 +270,42 @@ public class ForumService {
 			ThumbsUp thumbsUp = thumbsUpDAO.selectByTopic(topic.getId(), petMembers.getId());
 			topic.setIsThumbsUp(thumbsUp != null);
 
-			Follow follow = followDAO.select(topic.getId(), petMembers.getId());
+			Follow follow = followDAO.selectByTopicIdAndUserId(topic.getId(), petMembers.getId());
 			topic.setIsFollowed(follow != null);
 
 			Report report = reportDAO.select(topic.getId(), petMembers.getId());
 			topic.setIsReported(report != null);
 
 			System.out.println("topic = " + topic);
+			
+			Hit hit = hitDAO.selectByTopicId(topicId);
+			
+			if(hit == null) {
+				hit = new Hit();
+				hit.setTopicId(topicId);
+				hit.setCount(1);
+				
+				hitDAO.insert(hit);
+			}else {
+				hit.setCount(hit.getCount()+1);
+
+				hitDAO.update(hit);		
+			}
+			
+			History history = historyDAO.selectByTopicIdAndUserId(topic.getId(), petMembers.getId());
+			if(history == null) {
+				history = new History();
+				history.setTopicId(topic.getId());
+				history.setUserId(petMembers.getId());
+				history.setUsername(petMembers.getUsername());
+				
+				historyDAO.insert(history);
+			}else {
+				history.setReadDate(new Date(System.currentTimeMillis()));
+				
+				historyDAO.update(history);				
+			}
+			
 			return topic;
 		}
 	}
@@ -262,7 +330,7 @@ public class ForumService {
 			ThumbsUp thumbsUp = thumbsUpDAO.selectByTopic(topic.getId(), petMembers.getId());
 			map.put("isThumbsUp", thumbsUp != null);
 
-			Follow follow = followDAO.select(topic.getId(), petMembers.getId());
+			Follow follow = followDAO.selectByTopicIdAndUserId(topic.getId(), petMembers.getId());
 			map.put("isFollowed", follow != null);
 
 			Report report = reportDAO.select(topic.getId(), petMembers.getId());
@@ -315,8 +383,31 @@ public class ForumService {
 	}
 
 	// add topic
-	public Topic addTopic(Topic topic) {
-		return topicDAO.insert(topic);
+	public Topic addTopic(Topic topic, List<String> imgList, Boolean isCover) {
+		topic = topicDAO.insert(topic);
+		
+		if (isCover) {
+			if(!imgList.isEmpty()) {
+				for(int i = 0 ; i < imgList.size() ; i++) {
+					TopicImage topicImage = new TopicImage();
+					topicImage.setTopidId(topic.getId());
+					topicImage.setImageUrl(imgList.get(i));
+					if(i ==0) {
+						topicImage.setIsCover(true);
+					}
+					
+					addTopicImage(topicImage);
+				}
+			}
+		}
+		
+		return topic;
+	}
+	
+	//add topic image
+	public TopicImage addTopicImage(TopicImage topicImage) {
+	
+		return topicImageDAO.insert(topicImage);
 	}
 
 	// add read history record
@@ -326,12 +417,22 @@ public class ForumService {
 
 	// add reply
 	public Reply addReply(Reply reply) {
+		if(reply != null) {
+			noticeService.sendReplyTopicNotice(reply);
+		}
+		
 		return replyDAO.insert(reply);
 	}
 
 	// add thumbsUp
 	public ThumbsUp addThumbsUp(ThumbsUp thumbsUp, Integer replyId) {
 		thumbsUp.setType((replyId == null) ? ThumbsUpType.topic : ThumbsUpType.reply);
+		
+		if(thumbsUp.getType().equals(ThumbsUpType.topic)) {
+			noticeService.sendLikeTopicNotice(thumbsUp);
+		}else {
+			noticeService.sendLikeReplyNotice(thumbsUp);
+		}
 
 		return thumbsUpDAO.insert(thumbsUp);
 
@@ -352,6 +453,7 @@ public class ForumService {
 
 	// add report
 	public Report addReport(Report report) {
+			
 		return reportDAO.insert(report);
 	}
 
@@ -373,7 +475,7 @@ public class ForumService {
 	// update follow status
 	public void removeFollow(Integer topicId, Integer userId) {
 
-		Follow follow = followDAO.select(topicId, userId);
+		Follow follow = followDAO.selectByTopicIdAndUserId(topicId, userId);
 		if (follow != null) {
 			follow.setStatus(false);
 			followDAO.update(follow);

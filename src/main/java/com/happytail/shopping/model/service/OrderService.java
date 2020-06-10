@@ -90,4 +90,8 @@ public class OrderService {
 		return dao.getOibOld(mId, oId);
 	}
 	
+	public String payMoney(int orderId) {
+		return dao.payMoney(orderId);
+	}
+	
 }

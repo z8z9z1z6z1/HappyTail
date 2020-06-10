@@ -8,6 +8,7 @@
 <title>Pet Forum</title>
 <%@include file="/WEB-INF/pages/include/coreLibrary.jsp"%>
 
+<script src="<c:url value='/js/forum.js'/>"></script>
 <link href="<c:url value="/css/Forum.css"/> " rel="stylesheet">
 
 </head>
@@ -71,37 +72,44 @@
 					</div>
 				</div>
 
-				<div class="row justify-content-around">
+<!-- 				<div class="row justify-content-around"> -->
 
-					<div class=" col-md-2">
-						<img src="<c:url value='/img/story2.png'/>" class="card-img"
-							alt="...">
-					</div>
-					<div class="col-md-2">
-						<img src="<c:url value='/img/story2.png'/>" class="card-img"
-							alt="...">
-					</div>
-					<div class="col-md-2">
-						<img src="<c:url value='/img/story2.png'/>" class="card-img"
-							alt="...">
-					</div>
-					<div class="col-md-2">
-						<img src="<c:url value='/img/story2.png'/>" class="card-img"
-							alt="...">
-					</div>
-					<div class="col-md-2">
-						<img src="<c:url value='/img/story2.png'/>" class="card-img"
-							alt="...">
-					</div>
-					<div class="col-md-2">
-						<img src="<c:url value='/img/story2.png'/>" class="card-img"
-							alt="...">
-					</div>
-				</div>
+<!-- 					<div class=" col-md-2"> -->
+<%-- 						<img src="<c:url value='/img/story2.png'/>" class="card-img" --%>
+<!-- 							alt="..."> -->
+<!-- 					</div> -->
+<!-- 					<div class="col-md-2"> -->
+<%-- 						<img src="<c:url value='/img/story2.png'/>" class="card-img" --%>
+<!-- 							alt="..."> -->
+<!-- 					</div> -->
+<!-- 					<div class="col-md-2"> -->
+<%-- 						<img src="<c:url value='/img/story2.png'/>" class="card-img" --%>
+<!-- 							alt="..."> -->
+<!-- 					</div> -->
+<!-- 					<div class="col-md-2"> -->
+<%-- 						<img src="<c:url value='/img/story2.png'/>" class="card-img" --%>
+<!-- 							alt="..."> -->
+<!-- 					</div> -->
+<!-- 					<div class="col-md-2"> -->
+<%-- 						<img src="<c:url value='/img/story2.png'/>" class="card-img" --%>
+<!-- 							alt="..."> -->
+<!-- 					</div> -->
+<!-- 					<div class="col-md-2"> -->
+<%-- 						<img src="<c:url value='/img/story2.png'/>" class="card-img" --%>
+<!-- 							alt="..."> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
 				<article class="all-browsers">
 					<article id="topicListArea" class="browser bg-transparent">
 					</article>
 				</article>
+				<div id="topiclist-loading-img-area" class="container mt-5 mb-5 d-none">
+					<div class="row">
+						<div class="col-12">
+							<img class="mx-auto d-block" style="width: 50px" src="<c:url value="/img/loading.gif"/>"/>						
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -111,14 +119,56 @@
 	<%@include file="/HappytailFooter.jsp"%>
 
 	<div id="topicContentDialog" class="modal vh-100" tabindex="-1" role="dialog">
-		<div class="modal-dialog modal-xl" role="document">
+		<div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
 			<div class="modal-content">
-				<div class="modal-body" id="topicContent"></div>
-				<div class="modal-body" id="replyContentList"></div>
-				<div class="modal-body" id="addReply"></div>
+				<div class="modal-body">
+					<div id="topicContent"></div>
+					<div id="replyContentList"></div>
+					<div id="topic-content-loading-img-area" class="container mt-5 mb-5 d-none">
+					<div class="row">
+						<div class="col-12">
+							<img class="mx-auto d-block" style="width: 50px" src="<c:url value="/img/loading.gif"/>"/>						
+						</div>
+					</div>
+				</div>
+				</div>
+				<div class="modal-footer" id="addReply">
+					<div class="row  w-100">
+						<div class="col-md-1">
+                            <i class="fas fa-paw fa-2x"></i>
+                        </div>
+                         <div class="col-md-10">
+     						<div id="replyEditor"></div>
+                        </div>
+                        <div class="col-md-1">
+                        	<button type="button" class="btn btn-primary" onclick="clickAddReply()">送出</button>
+                        </div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+	
+	<div class="modal fade" id="stageListDialog" tabindex="-1" role="dialog" aria-labelledby="stageListModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="stageListModalLabel">樓層清單</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="stage-list" class="list-group">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 	<div id="addTopicDialog" class="modal" tabindex="-1" role="dialog">
 	
@@ -178,18 +228,33 @@
 										placeholder="標題">
 								</div>
 							</div>
-         					  <input type="hidden" name="content"/>
-          					  <input type="hidden" name="username" value="${petMembers.username}" />
-          					  <input type="hidden" name="userId" value="${petMembers.id}" />
+							<div class="row justify-content-md-center">
+								<div class="col-12" style="margin-top: 15px;">
+									 <div id="topicEditor"></div>
+								</div>
+							</div>
+							<div class="row justify-content-md-center">
+								<div class="col-12" style="margin-top: 15px;">
+									<div class="form-check">
+ 										 <input class="form-check-input" type="checkbox" value="true" id="isCover" name="isCover">
+  											<label class="form-check-label" for="isCover">是否顯示封面圖片
+  											</label>
+								</div>
+							</div>
+							</div>
+							
+        					  <input type="hidden" name="content"/>
+        					  <input type="hidden" name="imgList"/>
+         					  <input type="hidden" name="username" value="${petMembers.username}" />
+         					  <input type="hidden" name="userId" value="${petMembers.id}" />
 
-							<div class="form-group" style="margin-top: 15px;">
-								<label for="exampleFormControlTextarea1">Content:</label>
-								 <div id="topicEditor" >
-                        		</div>
+<!-- 							<div class="form-group" style="margin-top: 15px;"> -->
+<!-- 								<label for="exampleFormControlTextarea1">Content:</label> -->
+								
 <!-- 								<textarea name="content" class="form-control" -->
 <!-- 									id="exampleFormControlTextarea1" rows="20" cols="40" -->
 <!-- 									required="required"></textarea> -->
-							</div>
+<!-- 							</div> -->
 						</div>
 					</form>
 					<div class="row">
@@ -217,6 +282,10 @@
 					</div>
 					<form id="addReportForm">
 						<div class="form-group">
+						<div>
+							<blockquote class="flow-text">檢舉這篇文章的原因？</blockquote>
+						</div>
+						
 
 							<div class="custom-control custom-radio">
         						<input type="radio" class="custom-control-input" id="report1" name="categoryId" value="1">
@@ -252,8 +321,7 @@
 						        <input type="radio" class="custom-control-input" id="report8" name="categoryId" value="8">
 						        <label class="custom-control-label" for="report8">其他原因</label>
 						    </div>
-
-         					  <input type="hidden" name="content"/>
+                         	  <input type="hidden" name="topicId"/>
           					  <input type="hidden" name="username" value="${petMembers.username}" />
           					  <input type="hidden" name="userId" value="${petMembers.id}" />
 						</div>
@@ -268,426 +336,32 @@
 		</div>
 	</div>
 	
+	<div id="favorateCatgoryDialog" class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="row ml-3 mr-3 mt-3 mb-3">
+						<div class="col-12">
+							<div id="favorateCategoryList" class="list-group">
+				                  <button type="button" class="text-center list-group-item list-group-item-action " onclick="toggleActive(this)" value="1"><h5>生活</h5></button>
+				                  <button type="button" class="text-center list-group-item list-group-item-action " onclick="toggleActive(this)" value="2"><h5>資訊</h5></button>
+				                  <button type="button" class="text-center list-group-item list-group-item-action " onclick="toggleActive(this)" value="3"><h5>新聞</h5></button>
+				                  <button type="button" class="text-center list-group-item list-group-item-action " onclick="toggleActive(this)" value="4"><h5>發問</h5></button>
+				                  <button type="button" class="text-center list-group-item list-group-item-action " onclick="toggleActive(this)" value="5"><h5>認養</h5></button>
+				                  <button type="button" class="text-center list-group-item list-group-item-action " onclick="toggleActive(this)" value="6"><h5>其他</h5></button>
+			  					  <input type="hidden" name="userId" value="${petMembers.id}" />
+			                
+			                </div>
+			                <button type="button" class="btn btn-primary btn-lg btn-block mt-3" onclick="updateFavorateCategory()">
+			                 	 選擇喜好類別
+			                </button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	
-	
-	<script>
-// 		var contextRoot = "/happytail";
-		var topicListTemplate = "";
-		var topicContentTemplate = "";
-		var addTopicTemplate = "";
-		var replyListTemplate = "";
-		var topicListPageNum = 1; // start from page 1
-		var replyListPageNum = 1; // start from page 1
-		var categoryId = null;
-		var tagType = null;
-		var topicEditor = null;
-	    var replyTemplate = "";
-	    var stageLinkTemplate = "";
-	    var stageListTemplate = "";
-
-		$(document).ready(function() {
-
-			initTemplate();
-			getTopicListData();
-
-			initCKEditor();
-
-	        initTemplate();
-	        
-			if(location.href.indexOf("/topicPage/") != -1){
-				var topicId = location.href.substring(location.href.indexOf("/topicPage/") + 11);
-				openTopicContentDialog(topicId, null);
-			}
-
-	        $("#sendBtn").click(function(){
-	                sendReply();
-	         });
-
-		});
-
-		function initTemplate() {
-			$.ajax({
-					url : contextRoot + "/template/topicTemplate.mst",
-					type : "get",
-					async : false,
-					success : function(template) {
-						topicListTemplate = $(template).filter("#topicList").html();
-						topicContentTemplate = $(template).filter("#topicContent").html();
-						replyListTemplate = $(template).filter("#replyContentList").html();
-
-						}
-					});
-		}
-
-		function getTopicListData() {
-			var url = contextRoot + "/topic/topiclist?pageSize=10&pageNum="
-					+ topicListPageNum;
-
-			
-			if (tagType != null) {
-				url += "&tagType=" + tagType;
-			}
-
-			if (categoryId != null) {
-				url += "&categoryId=" + categoryId;
-			}
-
-			$.ajax({
-				url : url,
-				type : "get",
-				async : false,
-				success : function(data) {
-
-					render(data);
-
-					$("#totalNum").text(data.totalNum);
-					// check whether has next page or not
-					if (data.hasNext) {
-						// to the next page
-						topicListPageNum++;
-					}
-
-				}
-			});
-		}
-
-		function render(jsonObj) {
-			var data = Mustache.render(topicListTemplate, jsonObj);
-
-			$("#topicListArea").html("");
-			$("#topicListArea").append(data);
-		}
-
-		function openTopicContentDialog(topicId, targetObj) {
-
-			
-			var likeNum = targetObj != null ? $(targetObj).parentsUntil(".card").find(".likeNum").text() : 0;
-			var replyNum = targetObj != null ? $(targetObj).parentsUntil(".card").find(".replyNum").text() : 0;
-
-			var topicurl = contextRoot + "/topic/" + topicId;
-
-			var replyurl = contextRoot + "/reply?pageSize=10&pageNum="
-			+ replyListPageNum +"&topicId=" + topicId;
-
-			var stageListObj = { stageList : [] };
-
-			$.ajax({
-				url : topicurl,
-				type : "get",
-				async : false,
-				success : function(data) {
-					data.likeNum = likeNum;
-					data.replyNum = replyNum;
-					data.topicId = topicId;
-					
-					$("#topicContent").html(
-							Mustache.render(topicContentTemplate, data));
-					console.log(data);
-				}
-
-			});
-
-			$.ajax({
-				url : replyurl,
-				type: "get",
-				async : false,
-				success : function(data){
-
-					for(let i=0 ; i<data.records.length ; i++){
-						  data.records[i].stage = 'B' + (i + 1);
-						  data.records[i].stageValue = i + 1;
-						}
-									
-					$("#replyContentList").html("");
-					$("#replyContentList").append(Mustache.render(replyListTemplate, data));
-
-					// check whether has next page or not
-					if (data.hasNext) {
-						// to the next page
-						replyListPageNum++;
-					}
-				}
-
-				});
-			
-			history.pushState({foo: "Post"},"","/forum/topicPage/" + topicId);
-
-			$('#topicContentDialog').modal('show');
-		}
-
-		function openAddTopicDialog() {
-
-			console.log("Hello!");
-
-			$('#addTopicDialog').modal('show');
-		}
-
-
-        function initCKEditor(){
-            // CKEditor 初始化
-            ClassicEditor
-            .create( document.querySelector( '#topicEditor' ),{
-                placeholder: '在此輸入內容...',
-                ckfinder: {
-                uploadUrl: contextRoot + "/uploadTopicImg"
-                }
-            } )
-            .then( editorInstance => {
-            	topicEditor = editorInstance;
-                
-                // 將輸入區綁定change事件(:data為僅限輸入值更動,不包含輸入區中工具列及滑鼠的任何操作)
-//                 editor.model.document.on( 'change:data', () => {
-                    // console.log( 'The Document has changed!' );
-
-//                     let lastTagText = getLastOuterTagText($(editor.getData()));
-
-//                     atSignCheck(lastTagText);
-
-//                 } );
-            })
-            .catch( error => {
-                console.error( error );
-            });
-        }
-
-     // 檢查@是否出現於輸入區
-        function atSignCheck(text){
-            let strLen = text.length;
-            /*
-            * 1.檢查輸入字串的長度是否為零(避免裁切字串出問題)
-            * 2.檢查輸入字串最後一個字母是否為 '@'
-            * 3.檢查倒數第二個字母是否為空白 (需空格後方可使用@功能)
-            * 4.檢查輸入字串是否只有一個字母 (解決直接輸入@的情況)
-            * 5.第二點為必要條件,三四點則符合其一及可啟動 
-            */
-            if (strLen != 0) {
-                let atCheck = (text.substring(strLen - 1) == "@");
-                let emptyCheck = (text.substring(strLen - 2,strLen - 1) == " ");
-                let leadCheck = (strLen == 1);
-
-                if (atCheck && (emptyCheck || leadCheck)) {
-                    showStageSelectDialog();
-                    
-                }
-            }
-
-        }
-
-		function setCategoryId(catId, targetObj) {
-			$(".list-group-item").removeClass("active");
-			$(targetObj).addClass("active");
-
-			categoryId = catId;
-			pageNum = 1;
-			getTopicListData();
-		}
-
-		function setTagType(tagTypeSrc) {
-			tagType = tagTypeSrc;
-			pageNum = 1;
-			getTopicListData();
-		}
-
-		function clickAddTopic(){
-
-			var content = topicEditor.getData();
-
-			$("#addTopicForm input[name='content']").val(content);
-			console.log($("#addTopicForm input[name='content']").val()); 
-			console.log($(addTopicForm).serialize());
-
-			var url = contextRoot + "/topicPost";
-			var form = $(addTopicForm);
-
-			$.ajax({
-				url : url,
-				type : "POST",
-				async : false,
-				data: form.serialize(),
-				success : function(data) {
-// 					$("#addTopic")
-// 							.html(Mustache.render(addTopicTemplate, data));
-					console.log(data);
-
-				}
-
-			});
-			console.log("GoodBye!");
-
-			$('#addTopicDialog').modal('hide')
-
-			}
-
-		function clickAddReply(){
-			console.log($("#loginUsername"));
-			console.log($("#loginUserId"));
-			console.log("text = " + $("#loginUsername").text());
-			console.log("text = " + $("#loginUserId").text());
-			console.log("val = " + $("#loginUsername").val());
-			console.log("val = " + $("#loginUserId").val());
-			
-			$("#addReplyForm input[name='username']").val($("#loginUsername").text());
-			$("#addReplyForm input[name='userId']").val($("#loginUserId").text());
-			
-			console.log($(addReplyForm).serialize());
-
-			var url = contextRoot + "/replyPost";
-			var form = $(addReplyForm);
-			console.log($(addReplyForm).serialize());
-			
-
-			$.ajax({
-				url : url,
-				type : "POST",
-				async : false,
-				data: form.serialize(),
-				success : function(data) {
-					$("input[name='replyContent']").val("");
-					
-						var maxStageValue = 0
-					$(".stage-value").each(function(index, element){
-						maxStageValue = parseInt($(element).text());
-						})
-						data.stageValue	= maxStageValue + 1;
-						data.stage = "B" + (maxStageValue + 1);
-
-						var replyListObj = {
-								records : [data]
-							};
-
-						console.log(data);
-							
-					$("#replyContentList").append(Mustache.render(replyListTemplate, replyListObj));
-
-				}
-
-			});
-			console.log("GoodBye!");
-			}
-
-		function clickTopicThumbsUp(topicId, targetObj){
-
-			if($(targetObj).hasClass("checked")){
-
-				var url = contextRoot + "/thumbsUp/topic/" + $("#loginUserId").text()+ "/" + topicId;
-				
-				console.log($(targetObj).hasClass("checked"));
-				
-				$.ajax({
-					url : url,
-					type : "DELETE",
-					async : false,
-					success : function(data) {
-						$(targetObj).attr("class", "far fa-thumbs-up fa-2x");
-						 var likeValue = parseInt($(targetObj).next().text());
-						 likeValue--;
-						 $(targetObj).next().text(likeValue);
-					
-						}
-					});
-				
-			}else{
-				
-				var url = contextRoot + "/thumbsUpPost";
-				var dataObj = {
-							type : "topic",
-							topicId : topicId, 
-							replyId : null,
-							userId : $("#loginUserId").text(),
-							username : $("#loginUsername").text(),	
-							categoryId :1
-						}
-				console.log(dataObj);
-				console.log($(targetObj).hasClass("checked"));
-				
-				$.ajax({
-					url : url,
-					type : "POST",
-					async : false,
-					data : JSON.stringify(dataObj),
-					contentType : "application/json",
-					success : function(data) {
-							$(targetObj).attr("class", "fas checked  fa-thumbs-up fa-2x");
-							 var likeValue = parseInt($(targetObj).next().text());
-							 likeValue++;
-							 $(targetObj).next().text(likeValue);
-					
-						}
-				});
-				
-			}
-			
-	}
-
-		function clickTopicFollowed(topicId,targetObj){
-
-			if($(targetObj).hasClass("checked")){
-
-				var url = contextRoot + "/follow/" + $("#loginUserId").text()+ "/" + topicId;
-				
-				console.log($(targetObj).hasClass("checked"));
-				
-				$.ajax({
-					url : url,
-					type : "DELETE",
-					async : false,
-					success : function(data) {
-						$(targetObj).attr("class", "far fa-bookmark fa-2x");
-					
-						}
-					});
-				}else{
-					var url = contextRoot + "/followPost";
-					var dataObj = {
-							topicId : topicId, 
-							userId : $("#loginUserId").text(),
-							username :$("#loginUsername").text(),	
-							}
-					console.log(dataObj);
-	
-					console.log($(targetObj).hasClass("checked"));
-			
-					$.ajax({
-						url : url,
-						type : "POST",
-						async : false,
-						data : JSON.stringify(dataObj),
-						contentType : "application/json",
-						success : function(data) {
-							$(targetObj).attr("class", "fas checked fa-bookmark fa-2x");
-				
-						}
-				});
-			}
-				
-		}
-
-
-		function closeTopicContentDialog(topicId,targetObj){
-			$('#topicContentDialog').modal('hide')
-			}
-
-		function closeAddTopicDialog(topicId,targetObj){
-			$('#addTopicDialog').modal('hide')
-			}
-
-		function closeAddReportDialog(topicId,targetObj){
-			$('#addReportDialog').modal('hide')
-			}
-
-		function shareLine(){
-			var shareUrl = "https://social-plugins.line.me/lineit/share?url=" + location.href;
-	        window.open(shareUrl,"_blank","left=400,top=200,width=750,height=500");
-			}
-
-		function openAddReportDialog() {
-
-			console.log("Hello!");
-
-			$('#addReportDialog').modal('show');
-		}
-	</script>
-
 </body>
 
 </html>

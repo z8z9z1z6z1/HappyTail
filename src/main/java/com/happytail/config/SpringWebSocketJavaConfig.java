@@ -15,10 +15,14 @@ public class SpringWebSocketJavaConfig  implements WebSocketMessageBrokerConfigu
 	
 	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
+		// Endpoint no use "/notice" will happen connect fail
+
 		registry.addEndpoint("/inform")
 		.addInterceptors(new HttpSessionHandshakeInterceptor())
 		.setHandshakeHandler(new SpringWebSocketHandler())
 		.withSockJS();
+		
+		//Cause we do not know the sessionId of user, we find the userId to notice the user
 	}
 		
 	@Override

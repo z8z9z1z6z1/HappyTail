@@ -17,7 +17,7 @@
 	<form action="<c:url value="temporaryPasswordloginCheck" />" method="post">
 	<br><br>
 		<h5>請輸入您收到的臨時密碼 : </h5>
-			<label class="lab">TemporaryPassword :</label>
+			<label class="lab">臨時登入密碼 :</label>
 			<input class="inpu" type="text" name="temporaryPassword"  value = "${param.temporaryPassword }"/>
 			<br>
 			<font color='red' size="-1">${requestScope.ErrorMsg.temporaryPasswordError }</font>			

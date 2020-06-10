@@ -81,5 +81,12 @@ public class ShopView {
 		return view;
 	}
 	
+	@Bean
+	public View toInsertProduct() {
+		InternalResourceView view = new InternalResourceView();
+		view.setUrl("/WEB-INF/pages/shop/shopping/insertProduct.jsp");
+		return view;
+	}
+	
 
 }

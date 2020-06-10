@@ -18,7 +18,7 @@
 	<br><br>
 		<h5>請輸入您的 HappyTail 會員帳號 (您的email) : </h5>
 		
-			<label class="lab">Account :</label>
+			<label class="lab">帳號 :</label>
 			<input class="inpu" type="text" name="temporaryPasswordAccount"  value = "${param.temporaryPasswordAccount }"/>
 		<br>
 			<font color='red' size="-1">${errorMsg.temporaryPasswordAccountError }</font>

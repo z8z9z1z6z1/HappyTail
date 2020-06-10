@@ -2,6 +2,10 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"
 	integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
 	crossorigin="anonymous"></script>
+
+<!-- jQuery UI -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
 <!-- bootstrap -->
 <script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -19,12 +23,15 @@
 <!-- include top and footer -->
 <script src="<c:url value='/js/main.js'/>"></script>
 
+<!-- for Notice -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.3.0/sockjs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
 <!-- mustache js -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.1.0/mustache.min.js"></script>
 <!-- ckeditor -->
-<script src="https://cdn.ckeditor.com/ckeditor5/19.1.1/classic/ckeditor.js"></script>
-<!-- <script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/balloon-block/ckeditor.js"></script> -->
+<!-- <script src="https://cdn.ckeditor.com/ckeditor5/19.1.1/classic/ckeditor.js"></script> -->
+<script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/balloon-block/ckeditor.js"></script>
 
 <!-- bootstrap -->
 <link rel="stylesheet"

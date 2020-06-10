@@ -37,5 +37,15 @@ public class ReservationView {
 		view.setUrl("/WEB-INF/pages/reservation/evaluation37.jsp");
 		return view;
 	}
+	
+	@Bean
+	public View updateEvaluationPage() {
+		InternalResourceView view = new InternalResourceView();
+		view.setUrl("/WEB-INF/pages/reservation/updateEvaluation.jsp");
+		return view;
+	}
+	
+	
 
+	
 }

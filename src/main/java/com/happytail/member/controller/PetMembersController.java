@@ -50,7 +50,7 @@ public class PetMembersController {
 	ServletContext context;
 	
 	final static Pattern emailPattern = Pattern
-			.compile("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*$");
+			.compile("^[_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*$");
 	final static Pattern pwd1 = Pattern.compile(".*[a-z]+.*");
 	final static Pattern pwd2 = Pattern.compile(".*[A-Z]+.*");
 	final static Pattern pwd3 = Pattern.compile(".*[0-9]+.*");
